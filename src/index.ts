@@ -85,6 +85,6 @@ export function deleteResource<M extends Resource>(
   return newState as Resources<M>;
 }
 
-export const toArray = (resources: Resources<any>): Resource[] => {
-  return resources.keys.map((key: string): Resource => resources.data[key]);
+export function toArray<M extends Resource>(resources: Resources<M>): M[] {
+  return resources.keys.map((key: string): M => resources.data[key]);
 };
