@@ -4,17 +4,22 @@ export interface Resource {
   key: string;
 }
 
-export interface Resources<Models> {
+export interface Resources<M> {
   isLoading: boolean;
   keys: string[];
   data: {
-    [key: string]: Models;
+    [key: string]: M;
   };
 }
 
-export interface HorshoeAction<M> {
+export interface ResourceAction<M> {
   type: string;
-  payload?: Resources<M> | M;
+  payload?: M;
+}
+
+export interface ResourcesAction<M> {
+  type: string;
+  payload?: Resources<M>;
 }
 
 export const defaultResources: Resources<any> = {
