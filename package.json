@@ -10,7 +10,7 @@
     "schema"
   ],
   "description": "A suite of react components, helpers, and model definitions for a normalized React/Redux stack",
-  "author": "Unicorn Agency",
+  "author": "Unicorn Agency <hello@unicornagency.com>",
   "license": "MIT",
   "homepage": "https://github.com/Unicorn/horseshoes#readme",
   "bugs": {
@@ -25,12 +25,11 @@
   "scripts": {
     "test": "echo \"Tests are not setup yet\"",
     "build": "tsc",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
-    "lint": "yarn eslint ./src --ext .ts,.tsx",
+    "lint": "yarn eslint ./src --ext .ts,.tsx --fix",
     "prepare": "yarn build",
     "prepublishOnly": "yarn test && yarn lint",
     "preversion": "yarn lint",
-    "version": "yarn format && git add -A src",
+    "version": "yarn lint && git add -A src",
     "postversion": "git push && git push --tags"
   },
   "devDependencies": {
