@@ -27,8 +27,8 @@ export function initResources<M extends Resources<M>>(): Resources<M> {
     isLoading: false,
     keys: [],
     data: {}
-  }
-};
+  };
+}
 
 //
 // Helpers
