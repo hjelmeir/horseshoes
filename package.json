@@ -1,6 +1,6 @@
 {
   "name": "horseshoes",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "keywords": [
     "react",
     "redux",
@@ -18,19 +18,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Unicorn/horseshoes.git",
+    "url": "git+https://github.com/Unicorn/horseshoes.git"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Tests are not setup yet\"",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
     "lint": "yarn eslint ./src --ext .ts,.tsx",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm test && npm run lint",
-    "preversion": "npm run lint",
-    "version": "npm run format && git add -A src",
+    "prepare": "yarn build",
+    "prepublishOnly": "yarn test && yarn lint",
+    "preversion": "yarn lint",
+    "version": "yarn format && git add -A src",
     "postversion": "git push && git push --tags"
   },
   "devDependencies": {
