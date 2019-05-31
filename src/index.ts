@@ -31,7 +31,10 @@ export function createResource<M extends Resource>(
   payload?: M,
   defaultResource?: M
 ): Resources<M> {
-  if (!payload) return state;
+  if (!payload || !payload.key) {
+    console.log(`Error in createResource, missing payload or key: Type: ${typeof payload}, Payload: ${payload}`)
+    return state;
+  }
 
   let newState = { ...state };
   newState.keys = union(newState.keys, [payload.key]);
@@ -44,11 +47,33 @@ export function createResource<M extends Resource>(
   return newState as Resources<M>;
 }
 
+export function updateResource<M extends Resource>(
+  state: Resources<M>,
+  payload?: M
+): Resources<M> {
+  if (!payload || !payload.key) {
+    console.log(`Error in updateResource, missing payload or key: Type: ${typeof payload}, Payload: ${payload}`)
+    return state;
+  }
+
+  let newState = { ...state };
+  newState.keys = union(newState.keys, [payload.key]);
+  newState.data[payload.key] = merge(
+    newState.data[payload.key],
+    payload
+  );
+
+  return newState as Resources<M>;
+}
+
 export function deleteResource<M extends Resource>(
   state: Resources<M>,
   payload?: M
 ): Resources<M> {
-  if (!payload) return state;
+  if (!payload || !payload.key) {
+    console.log(`Error in updateResource, missing payload or key: Type: ${typeof payload}, Payload: ${payload}`)
+    return state;
+  }
 
   let newState = { ...state };
   newState.keys = newState.keys.filter((key: string) => key !== payload.key);
