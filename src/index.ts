@@ -22,10 +22,12 @@ export interface ResourcesAction<M> {
   payload?: Resources<M>;
 }
 
-export const defaultResources: Resources<any> = {
-  isLoading: false,
-  keys: [],
-  data: {}
+export function initResources<M extends Resources<M>>(): Resources<M> {
+  return {
+    isLoading: false,
+    keys: [],
+    data: {}
+  }
 };
 
 //
