@@ -1,0 +1,29 @@
+{
+  "name": "horseshoes",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Unicorn/horseshoes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Unicorn/horseshoes/issues"
+  },
+  "homepage": "https://github.com/Unicorn/horseshoes#readme",
+  "devDependencies": {
+    "@types/lodash": "^4.14.132",
+    "typescript": "^3.5.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11"
+  }
+}
