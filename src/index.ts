@@ -1,6 +1,7 @@
 import { union, merge } from "lodash";
 
 export interface Resource {
+  [key: string]: any
   key: string;
 }
 
@@ -22,7 +23,7 @@ export interface ResourcesAction<M> {
   payload?: Resources<M>;
 }
 
-export const defaultResource = {
+export const defaultResources = {
   isLoading: false,
   keys: [],
   data: {}
@@ -32,7 +33,7 @@ export function initResources<M extends Resource>(
   data?: Resources<M>
 ): Resources<M> {
   return {
-    ...defaultResource,
+    ...defaultResources,
     ...data
   };
 }
@@ -87,7 +88,7 @@ export function deleteResource<M extends Resource>(
 ): Resources<M> {
   if (!payload || !payload.key) {
     console.log(
-      `Error in updateResource, missing payload or key: Type: ${typeof payload}, Payload: ${payload}`
+      `Error in deleteResource, missing payload or key: Type: ${typeof payload}, Payload: ${payload}`
     );
     return state;
   }
@@ -95,6 +96,35 @@ export function deleteResource<M extends Resource>(
   let newState = { ...state };
   newState.keys = newState.keys.filter((key: string) => key !== payload.key);
   delete newState.data[payload.key];
+
+  return newState as Resources<M>;
+}
+
+export function deleteResourcesBy<M extends Resource>(
+  matches: [string, string],
+  state: Resources<M>,
+  payload?: M
+): Resources<M> {
+  if (!payload || !payload.key) {
+    console.log(
+      `Error in deleteResourceBy, missing payload or key: Type: ${typeof payload}, Payload: ${payload}`
+    );
+    return state;
+  }
+
+  let newState = { ...state };
+  let dataArr = toArray<M>(state).filter(record => record[matches[0]] === matches[1])
+  let dataKeys = dataArr.map(record => record.key)
+
+  if (dataArr.length === 0 || !dataArr[0].key) {
+    console.log(
+      `Error in deleteResourceBy, no matches found in state for: ${matches[0]}, ${matches[1]}`
+    );
+    return state;
+  }
+
+  newState.keys = newState.keys.filter((key: string) => !dataKeys.includes(key));
+  dataArr.forEach(record => delete newState.data[record.key])
 
   return newState as Resources<M>;
 }
