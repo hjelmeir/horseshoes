@@ -1,27 +1,8 @@
 import { union, merge } from "lodash";
+import { Resources, Resource } from "./models/resource";
+import { toArray } from "./helpers/resourceHelper";
 
-export interface Resource {
-  [key: string]: any
-  key: string;
-}
-
-export interface Resources<M> {
-  isLoading: boolean;
-  keys: string[];
-  data: {
-    [key: string]: M;
-  };
-}
-
-export interface ResourceAction<M> {
-  type: string;
-  payload?: M;
-}
-
-export interface ResourcesAction<M> {
-  type: string;
-  payload?: Resources<M>;
-}
+export { Resources, Resource, toArray };
 
 export const defaultResources = {
   isLoading: false,
@@ -113,22 +94,24 @@ export function deleteResourcesBy<M extends Resource>(
   }
 
   let newState = { ...state };
-  let dataArr = toArray<M>(state).filter(record => record[matches[0]] === matches[1])
-  let dataKeys = dataArr.map(record => record.key)
+  let dataArr = toArray<M>(state).filter(
+    record => record[matches[0]] === matches[1]
+  );
+  let dataKeys = dataArr.map(record => record.key);
 
   if (dataArr.length === 0 || !dataArr[0].key) {
     console.log(
-      `Error in deleteResourceBy, no matches found in state for: ${matches[0]}, ${matches[1]}`
+      `Error in deleteResourceBy, no matches found in state for: ${
+        matches[0]
+      }, ${matches[1]}`
     );
     return state;
   }
 
-  newState.keys = newState.keys.filter((key: string) => !dataKeys.includes(key));
-  dataArr.forEach(record => delete newState.data[record.key])
+  newState.keys = newState.keys.filter(
+    (key: string) => !dataKeys.includes(key)
+  );
+  dataArr.forEach(record => delete newState.data[record.key]);
 
   return newState as Resources<M>;
-}
-
-export function toArray<M extends Resource>(resources: Resources<M>): M[] {
-  return resources.keys.map((key: string): M => resources.data[key]);
 }
