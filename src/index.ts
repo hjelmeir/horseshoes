@@ -1,5 +1,10 @@
 import { union, merge } from "lodash";
-import { Resources, Resource, ResourcesAction, ResourceAction } from "./models/resource";
+import {
+  Resources,
+  Resource,
+  ResourcesAction,
+  ResourceAction
+} from "./models/resource";
 import { toArray } from "./helpers/resourceHelper";
 
 export { Resources, Resource, ResourcesAction, ResourceAction, toArray };
