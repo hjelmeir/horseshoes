@@ -5,6 +5,21 @@ export function toArray<M extends Resource>(resources: Resources<M>): M[] {
   return resources.keys.map((key: string): M => resources.data[key]);
 }
 
+export const defaultResources = {
+  isLoading: false,
+  keys: [],
+  data: {}
+};
+
+export function initResources<M extends Resource>(
+  data?: Resources<M>
+): Resources<M> {
+  return {
+    ...defaultResources,
+    ...data
+  };
+}
+
 export function createResource<M extends Resource>(
   state: Resources<M>,
   payload?: M,
