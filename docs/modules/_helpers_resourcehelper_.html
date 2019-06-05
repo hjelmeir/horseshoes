@@ -73,7 +73,11 @@
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_helpers_resourcehelper_.html#createresource" class="tsd-kind-icon">create<wbr>Resource</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_helpers_resourcehelper_.html#deleteresource" class="tsd-kind-icon">delete<wbr>Resource</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_helpers_resourcehelper_.html#deleteresourcesby" class="tsd-kind-icon">delete<wbr>Resources<wbr>By</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_helpers_resourcehelper_.html#toarray" class="tsd-kind-icon">to<wbr>Array</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_helpers_resourcehelper_.html#updateresource" class="tsd-kind-icon">update<wbr>Resource</a></li>
 							</ul>
 						</section>
 					</div>
@@ -81,6 +85,108 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="createresource" class="tsd-anchor"></a>
+					<h3>create<wbr>Resource</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Resource&lt;M&gt;<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="../interfaces/_models_resource_.resources.html" class="tsd-signature-type">Resources</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">M</span><span class="tsd-signature-symbol">&gt;</span>, payload<span class="tsd-signature-symbol">?: </span><a href="" class="tsd-signature-type">M</a>, defaultResource<span class="tsd-signature-symbol">?: </span><a href="" class="tsd-signature-type">M</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_models_resource_.resources.html" class="tsd-signature-type">Resources</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">M</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/8eef61b/src/helpers/resourceHelper.ts#L8">helpers/resourceHelper.ts:8</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>M<span class="tsd-signature-symbol">: </span><a href="../interfaces/_models_resource_.resource.html" class="tsd-signature-type">Resource</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>state: <a href="../interfaces/_models_resource_.resources.html" class="tsd-signature-type">Resources</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">M</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> payload: <a href="" class="tsd-signature-type">M</a></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> defaultResource: <a href="" class="tsd-signature-type">M</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_models_resource_.resources.html" class="tsd-signature-type">Resources</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">M</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="deleteresource" class="tsd-anchor"></a>
+					<h3>delete<wbr>Resource</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">delete<wbr>Resource&lt;M&gt;<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="../interfaces/_models_resource_.resources.html" class="tsd-signature-type">Resources</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">M</span><span class="tsd-signature-symbol">&gt;</span>, payload<span class="tsd-signature-symbol">?: </span><a href="" class="tsd-signature-type">M</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_models_resource_.resources.html" class="tsd-signature-type">Resources</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">M</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/8eef61b/src/helpers/resourceHelper.ts#L49">helpers/resourceHelper.ts:49</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>M<span class="tsd-signature-symbol">: </span><a href="../interfaces/_models_resource_.resource.html" class="tsd-signature-type">Resource</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>state: <a href="../interfaces/_models_resource_.resources.html" class="tsd-signature-type">Resources</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">M</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> payload: <a href="" class="tsd-signature-type">M</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_models_resource_.resources.html" class="tsd-signature-type">Resources</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">M</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="deleteresourcesby" class="tsd-anchor"></a>
+					<h3>delete<wbr>Resources<wbr>By</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">delete<wbr>Resources<wbr>By&lt;M&gt;<span class="tsd-signature-symbol">(</span>matches<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]</span>, state<span class="tsd-signature-symbol">: </span><a href="../interfaces/_models_resource_.resources.html" class="tsd-signature-type">Resources</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">M</span><span class="tsd-signature-symbol">&gt;</span>, payload<span class="tsd-signature-symbol">?: </span><a href="" class="tsd-signature-type">M</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_models_resource_.resources.html" class="tsd-signature-type">Resources</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">M</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/8eef61b/src/helpers/resourceHelper.ts#L67">helpers/resourceHelper.ts:67</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>M<span class="tsd-signature-symbol">: </span><a href="../interfaces/_models_resource_.resource.html" class="tsd-signature-type">Resource</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>matches: <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]</span></h5>
+								</li>
+								<li>
+									<h5>state: <a href="../interfaces/_models_resource_.resources.html" class="tsd-signature-type">Resources</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">M</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> payload: <a href="" class="tsd-signature-type">M</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_models_resource_.resources.html" class="tsd-signature-type">Resources</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">M</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
 					<a name="toarray" class="tsd-anchor"></a>
 					<h3>to<wbr>Array</h3>
@@ -91,7 +197,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/fcdd1cd/src/helpers/resourceHelper.ts#L3">helpers/resourceHelper.ts:3</a></li>
+									<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/8eef61b/src/helpers/resourceHelper.ts#L4">helpers/resourceHelper.ts:4</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -107,6 +213,38 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">M</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="updateresource" class="tsd-anchor"></a>
+					<h3>update<wbr>Resource</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">update<wbr>Resource&lt;M&gt;<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="../interfaces/_models_resource_.resources.html" class="tsd-signature-type">Resources</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">M</span><span class="tsd-signature-symbol">&gt;</span>, payload<span class="tsd-signature-symbol">?: </span><a href="" class="tsd-signature-type">M</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_models_resource_.resources.html" class="tsd-signature-type">Resources</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">M</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/8eef61b/src/helpers/resourceHelper.ts#L31">helpers/resourceHelper.ts:31</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>M<span class="tsd-signature-symbol">: </span><a href="../interfaces/_models_resource_.resource.html" class="tsd-signature-type">Resource</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>state: <a href="../interfaces/_models_resource_.resources.html" class="tsd-signature-type">Resources</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">M</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> payload: <a href="" class="tsd-signature-type">M</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_models_resource_.resources.html" class="tsd-signature-type">Resources</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">M</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -132,7 +270,19 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="_helpers_resourcehelper_.html#createresource" class="tsd-kind-icon">create<wbr>Resource</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="_helpers_resourcehelper_.html#deleteresource" class="tsd-kind-icon">delete<wbr>Resource</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="_helpers_resourcehelper_.html#deleteresourcesby" class="tsd-kind-icon">delete<wbr>Resources<wbr>By</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
 						<a href="_helpers_resourcehelper_.html#toarray" class="tsd-kind-icon">to<wbr>Array</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="_helpers_resourcehelper_.html#updateresource" class="tsd-kind-icon">update<wbr>Resource</a>
 					</li>
 				</ul>
 			</nav>
