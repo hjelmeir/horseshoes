@@ -1,8 +1,8 @@
 import { union, merge } from "lodash";
-import { Resources, Resource } from "./models/resource";
+import { Resources, Resource, ResourcesAction, ResourceAction } from "./models/resource";
 import { toArray } from "./helpers/resourceHelper";
 
-export { Resources, Resource, toArray };
+export { Resources, Resource, ResourcesAction, ResourceAction, toArray };
 
 export const defaultResources = {
   isLoading: false,
