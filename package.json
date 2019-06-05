@@ -1,6 +1,6 @@
 {
   "name": "horseshoes",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "keywords": [
     "react",
     "redux",
@@ -35,7 +35,9 @@
     "postversion": "git push && git push --tags"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.132",
+    "@types/electron": "^1.6.10",
+    "@types/lodash": "^4.14.133",
+    "@types/redux": "^3.6.0",
     "@typescript-eslint/eslint-plugin": "^1.9.0",
     "@typescript-eslint/parser": "^1.9.0",
     "eslint": "^5.16.0",
