@@ -1,5 +1,5 @@
 import { Event } from "electron";
-import { Action, MiddlewareAPI } from "redux";
+import { Action, MiddlewareAPI, Middleware, Dispatch } from "redux";
 
 declare global {
   interface Window {
@@ -18,7 +18,7 @@ export const ipcResourceHandler: ipcDispatch = (_, type, payload) => ({
   payload
 });
 
-export const ipcMiddleware = (events: IpcDispatchEvent = {}) => {
+export const ipcMiddleware = (events: IpcDispatchEvent = {}): Middleware<{}, any, Dispatch> => {
   if (typeof events !== "object")
     throw new TypeError(
       `ipcListeners expects an events object as its first parameter, you passed type "${typeof events}"`
