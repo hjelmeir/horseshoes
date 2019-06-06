@@ -18,7 +18,8 @@ export const ipcResourceHandler: ipcDispatch = (_, type, payload) => ({
   payload
 });
 
-export const ipcMiddleware = (
+export const createIpcMiddleware = (
+  renderer: Electron.IpcRenderer,
   events: IpcDispatchEvent = {}
 ): Middleware<{}, any, Dispatch> => {
   if (typeof events !== "object")
@@ -37,11 +38,8 @@ export const ipcMiddleware = (
 
   return ({ dispatch }: MiddlewareAPI) => {
     Object.keys(events).forEach(key => {
-      window.ipc.on(key, (event: Electron.Event, payload: any) => {
-        if (events[key]) dispatch(events[key](event, key, payload));
-        else if (events["default"])
-          dispatch(events["default"](event, key, payload));
-        else dispatch(ipcResourceHandler(event, key, payload));
+      renderer.on(key, (event: Electron.Event, payload: any) => {
+        dispatch(events[key](event, key, payload));
       });
     });
 

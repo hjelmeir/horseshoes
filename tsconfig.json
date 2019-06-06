@@ -1,14 +1,22 @@
 {
   "compilerOptions": {
-    "jsx": "react",
-    "jsxFactory": "createElement",
-
     "baseUrl": "./src",
+    "declaration": true,
+
+    "strict": true,
     "target": "es5",
     "module": "commonjs",
-    "declaration": true,
     "outDir": "./dist",
-    "strict": true
+
+    "inlineSources": true,
+    "sourceMap": true,
+    "newLine": "lf",
+
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "noUnusedLocals": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true
   },
   "include": ["src"],
   "exclude": [
