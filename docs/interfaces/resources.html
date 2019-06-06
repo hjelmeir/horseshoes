@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Window | horseshoes</title>
+	<title>Resources | horseshoes</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,27 +56,29 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_controllers_ipccontroller_.html">&quot;controllers/ipcController&quot;</a>
-				</li>
-				<li>
-					<a href="../modules/_controllers_ipccontroller_.__global.html">__global</a>
-				</li>
-				<li>
-					<a href="_controllers_ipccontroller_.__global.window.html">Window</a>
+					<a href="resources.html">Resources</a>
 				</li>
 			</ul>
-			<h1>Interface Window</h1>
+			<h1>Interface Resources&lt;M&gt;</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-type-parameters">
+				<h3>Type parameters</h3>
+				<ul class="tsd-type-parameters">
+					<li>
+						<h4>M</h4>
+					</li>
+				</ul>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Window</span>
+						<span class="target">Resources</span>
 					</li>
 				</ul>
 			</section>
@@ -84,24 +86,54 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section tsd-is-not-exported">
+						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_controllers_ipccontroller_.__global.window.html#ipc" class="tsd-kind-icon">ipc</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="resources.html#data" class="tsd-kind-icon">data</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="resources.html#isloading" class="tsd-kind-icon">is<wbr>Loading</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="resources.html#keys" class="tsd-kind-icon">keys</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-					<a name="ipc" class="tsd-anchor"></a>
-					<h3>ipc</h3>
-					<div class="tsd-signature tsd-kind-icon">ipc<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IpcRenderer</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="data" class="tsd-anchor"></a>
+					<h3>data</h3>
+					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/e5dc245/src/controllers/ipcController.ts#L6">controllers/ipcController.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/673a614/src/models/resource.ts#L9">models/resource.ts:9</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-index-signature">
+								<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">M</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="isloading" class="tsd-anchor"></a>
+					<h3>is<wbr>Loading</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Loading<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/673a614/src/models/resource.ts#L7">models/resource.ts:7</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="keys" class="tsd-anchor"></a>
+					<h3>keys</h3>
+					<div class="tsd-signature tsd-kind-icon">keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/673a614/src/models/resource.ts#L8">models/resource.ts:8</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -117,18 +149,66 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-interface">
+						<a href="ipcdispatchevent.html" class="tsd-kind-icon">Ipc<wbr>Dispatch<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="resource.html" class="tsd-kind-icon">Resource</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="resourceaction.html" class="tsd-kind-icon">Resource<wbr>Action</a>
+					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
-						<a href="_controllers_ipccontroller_.__global.window.html" class="tsd-kind-icon">Window</a>
+					<li class="current tsd-kind-interface tsd-has-type-parameter">
+						<a href="resources.html" class="tsd-kind-icon">Resources</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-								<a href="_controllers_ipccontroller_.__global.window.html#ipc" class="tsd-kind-icon">ipc</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="resources.html#data" class="tsd-kind-icon">data</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="resources.html#isloading" class="tsd-kind-icon">is<wbr>Loading</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="resources.html#keys" class="tsd-kind-icon">keys</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="resourcesaction.html" class="tsd-kind-icon">Resources<wbr>Action</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#ipcdispatch" class="tsd-kind-icon">ipc<wbr>Dispatch</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="../globals.html#createresource" class="tsd-kind-icon">create<wbr>Resource</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="../globals.html#deleteresource" class="tsd-kind-icon">delete<wbr>Resource</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="../globals.html#deleteresourcesby" class="tsd-kind-icon">delete<wbr>Resources<wbr>By</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="../globals.html#initresources" class="tsd-kind-icon">init<wbr>Resources</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#ipcmiddleware" class="tsd-kind-icon">ipc<wbr>Middleware</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#ipcresourcehandler" class="tsd-kind-icon">ipc<wbr>Resource<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="../globals.html#toarray" class="tsd-kind-icon">to<wbr>Array</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="../globals.html#updateresource" class="tsd-kind-icon">update<wbr>Resource</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="../globals.html#defaultresources" class="tsd-kind-icon">default<wbr>Resources</a>
+					</li>
 				</ul>
 			</nav>
 		</div>

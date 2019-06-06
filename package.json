@@ -1,6 +1,6 @@
 {
   "name": "horseshoes",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "keywords": [
     "react",
     "redux",
@@ -26,10 +26,9 @@
     "test": "echo \"Tests are not setup yet\"",
     "build": "tsc",
     "lint": "yarn eslint ./src --ext .ts,.tsx --fix",
-    "docs": "typedoc --out docs src",
-    "gh-pages": "rimraf docs && npm run docs && gh-pages -d docs",
+    "docs": "rm -rf docs && typedoc --out docs src --mode file",
     "prepare": "yarn build",
-    "prepublishOnly": "yarn test && yarn lint && yarn docs && yarn gh-pages",
+    "prepublishOnly": "yarn test && yarn lint && yarn docs",
     "preversion": "yarn lint",
     "version": "git add -A",
     "postversion": "git push && git push --tags"
@@ -44,7 +43,6 @@
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.13.0",
-    "gh-pages": "^2.0.1",
     "prettier": "^1.17.1",
     "typedoc": "^0.14.2",
     "typescript": "^3.5.1"
