@@ -1,5 +1,5 @@
-import { createResource, deleteResource, initResources } from "helpers";
-import { ALERT, Alert, AlertAction, defaultAlert, Resources } from "models";
+import { createResource, deleteResource, initResources } from "../helpers";
+import { ALERT, Alert, AlertAction, defaultAlert, Resources } from "../models";
 
 /**
  * Publish an alert

@@ -1,9 +1,3 @@
-import * as HM from "models";
-import * as HH from "helpers/resourceHelper";
-import * as HC from "controllers/alertController";
-
-export { HM, HH, HC };
-
-export * from "controllers";
-export * from "helpers";
-export * from "models";
+export * from "./controllers/index";
+export * from "./helpers/index";
+export * from "./models/index";

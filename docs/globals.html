@@ -74,8 +74,16 @@
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
+							<h3>Enumerations</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-enum"><a href="enums/alert.html" class="tsd-kind-icon">ALERT</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface"><a href="interfaces/alert.html" class="tsd-kind-icon">Alert</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/alertaction.html" class="tsd-kind-icon">Alert<wbr>Action</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/ipcdispatchevent.html" class="tsd-kind-icon">Ipc<wbr>Dispatch<wbr>Event</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/resource.html" class="tsd-kind-icon">Resource</a></li>
 								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/resourceaction.html" class="tsd-kind-icon">Resource<wbr>Action</a></li>
@@ -92,7 +100,10 @@
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-function"><a href="globals.html#alertreducer" class="tsd-kind-icon">alert<wbr>Reducer</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#createalert" class="tsd-kind-icon">create<wbr>Alert</a></li>
 								<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#createresource" class="tsd-kind-icon">create<wbr>Resource</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#deletealert" class="tsd-kind-icon">delete<wbr>Alert</a></li>
 								<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#deleteresource" class="tsd-kind-icon">delete<wbr>Resource</a></li>
 								<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#deleteresourcesby" class="tsd-kind-icon">delete<wbr>Resources<wbr>By</a></li>
 								<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#initresources" class="tsd-kind-icon">init<wbr>Resources</a></li>
@@ -105,6 +116,7 @@
 						<section class="tsd-index-section ">
 							<h3>Object literals</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-object-literal"><a href="globals.html#defaultalert" class="tsd-kind-icon">default<wbr>Alert</a></li>
 								<li class="tsd-kind-object-literal"><a href="globals.html#defaultresources" class="tsd-kind-icon">default<wbr>Resources</a></li>
 							</ul>
 						</section>
@@ -119,7 +131,7 @@
 					<div class="tsd-signature tsd-kind-icon">ipc<wbr>Dispatch<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/673a614/src/controllers/ipcController.ts#L10">controllers/ipcController.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/138923d/src/controllers/ipcController.ts#L10">controllers/ipcController.ts:10</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -153,6 +165,64 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="alertreducer" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> alert<wbr>Reducer</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">alert<wbr>Reducer<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="interfaces/resources.html" class="tsd-signature-type">Resources</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/alert.html" class="tsd-signature-type">Alert</a><span class="tsd-signature-symbol">&gt;</span>, action<span class="tsd-signature-symbol">: </span><a href="interfaces/alertaction.html" class="tsd-signature-type">AlertAction</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/resources.html" class="tsd-signature-type">Resources</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/alert.html" class="tsd-signature-type">Alert</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/138923d/src/controllers/alertController.ts#L22">controllers/alertController.ts:22</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>state: <a href="interfaces/resources.html" class="tsd-signature-type">Resources</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/alert.html" class="tsd-signature-type">Alert</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5>action: <a href="interfaces/alertaction.html" class="tsd-signature-type">AlertAction</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="interfaces/resources.html" class="tsd-signature-type">Resources</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/alert.html" class="tsd-signature-type">Alert</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="createalert" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> create<wbr>Alert</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Alert<span class="tsd-signature-symbol">(</span>payload<span class="tsd-signature-symbol">: </span><a href="interfaces/alert.html" class="tsd-signature-type">Alert</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/alertaction.html" class="tsd-signature-type">AlertAction</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/138923d/src/controllers/alertController.ts#L9">controllers/alertController.ts:9</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Publish an alert</p>
+									<ul>
+										<li>if <code>dismissAfter</code> was set, the alert will be auto dismissed after the given period.</li>
+										<li>if id wasn&#39;t specified, a time based id will be generated.</li>
+									</ul>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>payload: <a href="interfaces/alert.html" class="tsd-signature-type">Alert</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="interfaces/alertaction.html" class="tsd-signature-type">AlertAction</a></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter">
 					<a name="createresource" class="tsd-anchor"></a>
 					<h3>create<wbr>Resource</h3>
@@ -163,7 +233,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/673a614/src/helpers/resourceHelper.ts#L23">helpers/resourceHelper.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/138923d/src/helpers/resourceHelper.ts#L23">helpers/resourceHelper.ts:23</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -188,6 +258,34 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="deletealert" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> delete<wbr>Alert</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">delete<wbr>Alert<span class="tsd-signature-symbol">(</span>payload<span class="tsd-signature-symbol">: </span><a href="interfaces/alert.html" class="tsd-signature-type">Alert</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/alertaction.html" class="tsd-signature-type">AlertAction</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/138923d/src/controllers/alertController.ts#L17">controllers/alertController.ts:17</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Dismiss an alert</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>payload: <a href="interfaces/alert.html" class="tsd-signature-type">Alert</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="interfaces/alertaction.html" class="tsd-signature-type">AlertAction</a></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter">
 					<a name="deleteresource" class="tsd-anchor"></a>
 					<h3>delete<wbr>Resource</h3>
@@ -198,7 +296,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/673a614/src/helpers/resourceHelper.ts#L64">helpers/resourceHelper.ts:64</a></li>
+									<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/138923d/src/helpers/resourceHelper.ts#L64">helpers/resourceHelper.ts:64</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -230,7 +328,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/673a614/src/helpers/resourceHelper.ts#L82">helpers/resourceHelper.ts:82</a></li>
+									<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/138923d/src/helpers/resourceHelper.ts#L82">helpers/resourceHelper.ts:82</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -265,7 +363,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/673a614/src/helpers/resourceHelper.ts#L14">helpers/resourceHelper.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/138923d/src/helpers/resourceHelper.ts#L14">helpers/resourceHelper.ts:14</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -294,7 +392,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/673a614/src/controllers/ipcController.ts#L21">controllers/ipcController.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/138923d/src/controllers/ipcController.ts#L21">controllers/ipcController.ts:21</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -317,7 +415,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/673a614/src/controllers/ipcController.ts#L16">controllers/ipcController.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/138923d/src/controllers/ipcController.ts#L16">controllers/ipcController.ts:16</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -354,7 +452,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/673a614/src/helpers/resourceHelper.ts#L4">helpers/resourceHelper.ts:4</a></li>
+									<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/138923d/src/helpers/resourceHelper.ts#L4">helpers/resourceHelper.ts:4</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -383,7 +481,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/673a614/src/helpers/resourceHelper.ts#L46">helpers/resourceHelper.ts:46</a></li>
+									<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/138923d/src/helpers/resourceHelper.ts#L46">helpers/resourceHelper.ts:46</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -409,12 +507,72 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Object literals</h2>
 				<section class="tsd-panel tsd-member tsd-kind-object-literal">
+					<a name="defaultalert" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> default<wbr>Alert</h3>
+					<div class="tsd-signature tsd-kind-icon">default<wbr>Alert<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/138923d/src/models/alert.ts#L27">models/alert.ts:27</a></li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="defaultalert.dismissafter" class="tsd-anchor"></a>
+						<h3>dismiss<wbr>After</h3>
+						<div class="tsd-signature tsd-kind-icon">dismiss<wbr>After<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;3000</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/138923d/src/models/alert.ts#L32">models/alert.ts:32</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="defaultalert.dismissable" class="tsd-anchor"></a>
+						<h3>dismissable</h3>
+						<div class="tsd-signature tsd-kind-icon">dismissable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> =&nbsp;true</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/138923d/src/models/alert.ts#L31">models/alert.ts:31</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="defaultalert.key" class="tsd-anchor"></a>
+						<h3>key</h3>
+						<div class="tsd-signature tsd-kind-icon">key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;alert&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/138923d/src/models/alert.ts#L28">models/alert.ts:28</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="defaultalert.message" class="tsd-anchor"></a>
+						<h3>message</h3>
+						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;No message&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/138923d/src/models/alert.ts#L30">models/alert.ts:30</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="defaultalert.status" class="tsd-anchor"></a>
+						<h3>status</h3>
+						<div class="tsd-signature tsd-kind-icon">status<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"generic"</span><span class="tsd-signature-symbol"> =&nbsp;&quot;generic&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/138923d/src/models/alert.ts#L29">models/alert.ts:29</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal">
 					<a name="defaultresources" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> default<wbr>Resources</h3>
 					<div class="tsd-signature tsd-kind-icon">default<wbr>Resources<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/673a614/src/helpers/resourceHelper.ts#L8">helpers/resourceHelper.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/138923d/src/helpers/resourceHelper.ts#L8">helpers/resourceHelper.ts:8</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -423,7 +581,7 @@
 						<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/673a614/src/helpers/resourceHelper.ts#L11">helpers/resourceHelper.ts:11</a></li>
+								<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/138923d/src/helpers/resourceHelper.ts#L11">helpers/resourceHelper.ts:11</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-type-declaration">
@@ -438,7 +596,7 @@
 						<div class="tsd-signature tsd-kind-icon">is<wbr>Loading<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/673a614/src/helpers/resourceHelper.ts#L9">helpers/resourceHelper.ts:9</a></li>
+								<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/138923d/src/helpers/resourceHelper.ts#L9">helpers/resourceHelper.ts:9</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -448,7 +606,7 @@
 						<div class="tsd-signature tsd-kind-icon">keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">never</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/673a614/src/helpers/resourceHelper.ts#L10">helpers/resourceHelper.ts:10</a></li>
+								<li>Defined in <a href="https://github.com/Unicorn/horseshoes/blob/138923d/src/helpers/resourceHelper.ts#L10">helpers/resourceHelper.ts:10</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -468,6 +626,15 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="enums/alert.html" class="tsd-kind-icon">ALERT</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/alert.html" class="tsd-kind-icon">Alert</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/alertaction.html" class="tsd-kind-icon">Alert<wbr>Action</a>
+					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/ipcdispatchevent.html" class="tsd-kind-icon">Ipc<wbr>Dispatch<wbr>Event</a>
 					</li>
@@ -486,8 +653,17 @@
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#ipcdispatch" class="tsd-kind-icon">ipc<wbr>Dispatch</a>
 					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#alertreducer" class="tsd-kind-icon">alert<wbr>Reducer</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#createalert" class="tsd-kind-icon">create<wbr>Alert</a>
+					</li>
 					<li class=" tsd-kind-function tsd-has-type-parameter">
 						<a href="globals.html#createresource" class="tsd-kind-icon">create<wbr>Resource</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#deletealert" class="tsd-kind-icon">delete<wbr>Alert</a>
 					</li>
 					<li class=" tsd-kind-function tsd-has-type-parameter">
 						<a href="globals.html#deleteresource" class="tsd-kind-icon">delete<wbr>Resource</a>
@@ -509,6 +685,9 @@
 					</li>
 					<li class=" tsd-kind-function tsd-has-type-parameter">
 						<a href="globals.html#updateresource" class="tsd-kind-icon">update<wbr>Resource</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#defaultalert" class="tsd-kind-icon">default<wbr>Alert</a>
 					</li>
 					<li class=" tsd-kind-object-literal">
 						<a href="globals.html#defaultresources" class="tsd-kind-icon">default<wbr>Resources</a>

@@ -2,16 +2,13 @@
   "compilerOptions": {
     "jsx": "react",
     "jsxFactory": "createElement",
-    
+
     "baseUrl": "./src",
     "target": "es5",
     "module": "commonjs",
     "declaration": true,
     "outDir": "./dist",
-    "strict": true,
-    "paths": {
-      "*": ["*"]
-    }
+    "strict": true
   },
   "include": ["src"],
   "exclude": [
