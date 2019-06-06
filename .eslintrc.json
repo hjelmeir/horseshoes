@@ -1,7 +1,6 @@
 {
   "parser": "@typescript-eslint/parser",
   "extends": [
-    "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
   ],
@@ -9,7 +8,6 @@
     "ecmaVersion": 2018,
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true,
       "modules": true
     }
   },
@@ -33,18 +31,12 @@
     "@typescript-eslint/explicit-function-return-type": {
       "allowExpressions": true,
       "allowTypedFunctionExpressions": true
-    },
-    "react/prop-types": "off"
+    }
   },
   "overrides": [
     {
-      "files": ["./src/**/*.ts", ".src/**/*.tsx"],
+      "files": ["./src/**/*.ts"],
       "excludedFiles": "*.test.ts"
     }
-  ],
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  }
+  ]
 }

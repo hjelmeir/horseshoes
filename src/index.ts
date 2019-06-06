@@ -1,5 +1,9 @@
-import * as HM from "./models/resource";
-import * as HH from "./helpers/resourceHelper";
-import { ipcMiddleware } from "./controllers/ipcController";
+import * as HM from "models";
+import * as HH from "helpers/resourceHelper";
+import * as HC from "controllers/alertController";
 
-export { HM, HH, ipcMiddleware };
+export { HM, HH, HC };
+
+export * from "controllers";
+export * from "helpers";
+export * from "models";

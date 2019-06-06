@@ -4,7 +4,6 @@ export interface Resource {
 }
 
 export interface Resources<M> {
-  isLoading: boolean;
   keys: string[];
   data: {
     [key: string]: M;
