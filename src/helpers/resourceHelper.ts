@@ -2,7 +2,9 @@ import { union, merge } from "lodash";
 import { Resources, Resource } from "../models/resource";
 
 export function toArray<M extends Resource>(resources: Resources<M>): M[] {
-  return resources.keys.map((key: string): M => resources.data[key]);
+  return resources.keys
+    .filter(k => typeof k === "string")
+    .map(k => resources.data[k]);
 }
 
 export const defaultResources = {
