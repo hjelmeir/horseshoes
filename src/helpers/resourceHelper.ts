@@ -1,4 +1,5 @@
 import { union, merge } from "lodash";
+import { produce } from "immer";
 import { Resources, Resource } from "../models/resource";
 
 export function toArray<M extends Resource>(resources: Resources<M>): M[] {
@@ -34,15 +35,14 @@ export const createResource = <M extends Resource>(
     return state;
   }
 
-  let newState = { ...state };
-  newState.keys = union(newState.keys, [payload.key]);
-  newState.data[payload.key] = merge(
-    newState.data[payload.key],
-    defaultResource,
-    payload
-  );
-
-  return newState as Resources<M>;
+  return produce(state, (newState: Resources<M>) => {
+    newState.keys = union(newState.keys, [payload.key]);
+    newState.data[payload.key] = merge(
+      newState.data[payload.key],
+      defaultResource,
+      payload
+    );
+  }) as Resources<M>;
 };
 
 export const updateResource = <M extends Resource>(
@@ -56,11 +56,10 @@ export const updateResource = <M extends Resource>(
     return state;
   }
 
-  let newState = { ...state };
-  newState.keys = union(newState.keys, [payload.key]);
-  newState.data[payload.key] = merge(newState.data[payload.key], payload);
-
-  return newState as Resources<M>;
+  return produce(state, (newState: Resources<M>) => {
+    newState.keys = union(newState.keys, [payload.key]);
+    newState.data[payload.key] = merge(newState.data[payload.key], payload);
+  }) as Resources<M>;
 };
 
 export const deleteResource = <M extends Resource>(
@@ -74,11 +73,10 @@ export const deleteResource = <M extends Resource>(
     return state;
   }
 
-  let newState = { ...state };
-  newState.keys = newState.keys.filter((key: string) => key !== payload.key);
-  delete newState.data[payload.key];
-
-  return newState as Resources<M>;
+  return produce(state, (newState: Resources<M>) => {
+    newState.keys = newState.keys.filter((key: string) => key !== payload.key);
+    delete newState.data[payload.key];
+  }) as Resources<M>;
 };
 
 export const deleteResourcesBy = <M extends Resource>(
@@ -93,7 +91,6 @@ export const deleteResourcesBy = <M extends Resource>(
     return state;
   }
 
-  let newState = { ...state };
   let dataArr = toArray<M>(state).filter(
     record => record[matches[0]] === matches[1]
   );
@@ -108,10 +105,10 @@ export const deleteResourcesBy = <M extends Resource>(
     return state;
   }
 
-  newState.keys = newState.keys.filter(
-    (key: string) => !dataKeys.includes(key)
-  );
-  dataArr.forEach(record => delete newState.data[record.key]);
-
-  return newState as Resources<M>;
+  return (produce(state, (newState: Resources<M>) => {
+    newState.keys = newState.keys.filter(
+      (key: string) => !dataKeys.includes(key)
+    );
+    dataArr.forEach(record => delete newState.data[record.key]);
+  }) as Resources<M>) as Resources<M>;
 };
