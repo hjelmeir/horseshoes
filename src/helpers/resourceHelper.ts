@@ -20,7 +20,7 @@ export const initResources = <M extends Resource>(
     ...defaultResources,
     ...data
   };
-}
+};
 
 export const createResource = <M extends Resource>(
   state: Resources<M>,
@@ -43,7 +43,7 @@ export const createResource = <M extends Resource>(
   );
 
   return newState as Resources<M>;
-}
+};
 
 export const updateResource = <M extends Resource>(
   state: Resources<M>,
@@ -61,7 +61,7 @@ export const updateResource = <M extends Resource>(
   newState.data[payload.key] = merge(newState.data[payload.key], payload);
 
   return newState as Resources<M>;
-}
+};
 
 export const deleteResource = <M extends Resource>(
   state: Resources<M>,
@@ -79,7 +79,7 @@ export const deleteResource = <M extends Resource>(
   delete newState.data[payload.key];
 
   return newState as Resources<M>;
-}
+};
 
 export const deleteResourcesBy = <M extends Resource>(
   matches: [string, string],
@@ -114,4 +114,4 @@ export const deleteResourcesBy = <M extends Resource>(
   dataArr.forEach(record => delete newState.data[record.key]);
 
   return newState as Resources<M>;
-}
+};
