@@ -13,20 +13,20 @@ export const defaultResources = {
   data: {}
 };
 
-export function initResources<M extends Resource>(
+export const initResources = <M extends Resource>(
   data?: Resources<M>
-): Resources<M> {
+): Resources<M> => {
   return {
     ...defaultResources,
     ...data
   };
 }
 
-export function createResource<M extends Resource>(
+export const createResource = <M extends Resource>(
   state: Resources<M>,
   payload?: M,
   defaultResource?: M
-): Resources<M> {
+): Resources<M> => {
   if (!payload || !payload.key) {
     console.log(
       `Error in createResource, missing payload or key: Type: ${typeof payload}, Payload: ${payload}`
@@ -45,10 +45,10 @@ export function createResource<M extends Resource>(
   return newState as Resources<M>;
 }
 
-export function updateResource<M extends Resource>(
+export const updateResource = <M extends Resource>(
   state: Resources<M>,
   payload?: M
-): Resources<M> {
+): Resources<M> => {
   if (!payload || !payload.key) {
     console.log(
       `Error in updateResource, missing payload or key: Type: ${typeof payload}, Payload: ${payload}`
@@ -63,10 +63,10 @@ export function updateResource<M extends Resource>(
   return newState as Resources<M>;
 }
 
-export function deleteResource<M extends Resource>(
+export const deleteResource = <M extends Resource>(
   state: Resources<M>,
   payload?: M
-): Resources<M> {
+): Resources<M> => {
   if (!payload || !payload.key) {
     console.log(
       `Error in deleteResource, missing payload or key: Type: ${typeof payload}, Payload: ${payload}`
@@ -81,11 +81,11 @@ export function deleteResource<M extends Resource>(
   return newState as Resources<M>;
 }
 
-export function deleteResourcesBy<M extends Resource>(
+export const deleteResourcesBy = <M extends Resource>(
   matches: [string, string],
   state: Resources<M>,
   payload?: M
-): Resources<M> {
+): Resources<M> => {
   if (!payload || !payload.key) {
     console.log(
       `Error in deleteResourceBy, missing payload or key: Type: ${typeof payload}, Payload: ${payload}`
