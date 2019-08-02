@@ -38,8 +38,8 @@ export const createResource = <M extends Resource>(
   return produce(state, (newState: Resources<M>) => {
     newState.keys = union(newState.keys, [payload.key]);
     newState.data[payload.key] = merge(
-      newState.data[payload.key],
       defaultResource,
+      newState.data[payload.key],
       payload
     );
   }) as Resources<M>;
