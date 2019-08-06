@@ -64,6 +64,25 @@ export const updateResource = <M extends Resource>(
   }) as Resources<M>;
 };
 
+export const updateResources = <M extends Resource>(
+  state: Resources<M>,
+  payload?: M[]
+): Resources<M> => {
+  if (!payload || !Array.isArray(payload)) {
+    return produce(state, (newState: Resources<M>) => {
+      newState.error = true
+      newState.errorTrace['updateResources'] = `Missng payload, or payload is not array. Payload: ${payload}`
+    })
+  }
+
+  return produce(state, (newState: Resources<M>) => {
+    payload.forEach(course => {
+      newState.keys = union(newState.keys, [course.key])
+      newState.data[course.key] = merge(newState.data[course.key], payload)
+    })
+  }) as Resources<M>;
+}
+
 export const deleteResource = <M extends Resource>(
   state: Resources<M>,
   payload?: M
