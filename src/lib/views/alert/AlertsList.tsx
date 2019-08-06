@@ -7,15 +7,15 @@ import { Alert } from '../../models'
 
 import AlertItem from './AlertItem'
 
-interface Connected {
+export interface AlertListConnected {
   alerts: Alert[]
 }
 
-interface Actions {
+interface AlertListActions {
   _deleteAlert: typeof deleteAlert
 }
 
-const AlertsList: SFC<Connected & Actions> = ({ alerts, _deleteAlert }) => {
+const AlertsList: SFC<AlertListConnected & AlertListActions> = ({ alerts, _deleteAlert }) => {
   if (!alerts || alerts.length < 1) return null
 
   return (
@@ -27,11 +27,11 @@ const AlertsList: SFC<Connected & Actions> = ({ alerts, _deleteAlert }) => {
   )
 }
 
-const mapState = (state: any): Connected => ({
+const mapState = (state: any): AlertListConnected => ({
   alerts: toArray(state.alerts) as Alert[]
 })
 
-const mapDispatch: Actions = {
+const mapDispatch: AlertListActions = {
   _deleteAlert: deleteAlert
 }
 

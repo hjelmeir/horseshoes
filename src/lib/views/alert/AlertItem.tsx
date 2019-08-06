@@ -3,12 +3,12 @@ import { createElement, SFC } from 'react'
 import { Alert } from '../../models/alert'
 import CloseIcon from '../icons/CloseIcon'
 
-interface Props {
+export interface AlertItemProps {
   alert: Alert
   dismissHandler: (alert: Alert) => void
 }
 
-const AlertItem: SFC<Props> = ({ dismissHandler, alert }) => (
+const AlertItem: SFC<AlertItemProps> = ({ dismissHandler, alert }) => (
   <div className={`alert ${alert.status}`}>
     {alert.message}
     {alert.dismissable && (
