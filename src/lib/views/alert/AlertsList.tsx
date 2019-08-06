@@ -1,22 +1,21 @@
 /** @jsx createElement */
 import { createElement, SFC } from 'react'
 import { connect } from 'react-redux'
-import { toArray } from '../../helpers/resourceHelper'
 import { deleteAlert } from '../../controllers/alertController'
+import { toArray } from '../../helpers/resourceHelper'
 import { Alert } from '../../models'
-
 import AlertItem from './AlertItem'
 
-export interface AlertListConnected {
-  alerts: Alert[]
+export interface Connected {
+  readonly alerts: readonly Alert[]
 }
 
-interface AlertListActions {
-  _deleteAlert: typeof deleteAlert
+export interface Actions {
+  readonly _deleteAlert: typeof deleteAlert
 }
 
-const AlertsList: SFC<AlertListConnected & AlertListActions> = ({ alerts, _deleteAlert }) => {
-  if (!alerts || alerts.length < 1) return null
+const AlertsList: SFC<Connected & Actions> = ({ alerts, _deleteAlert }) => {
+  if (!alerts || alerts.length < 1) { return null }
 
   return (
     <div className="alerts">
@@ -27,11 +26,11 @@ const AlertsList: SFC<AlertListConnected & AlertListActions> = ({ alerts, _delet
   )
 }
 
-const mapState = (state: any): AlertListConnected => ({
-  alerts: toArray(state.alerts) as Alert[]
+const mapState = (state: any): Connected => ({
+  alerts: toArray(state.alerts) as readonly Alert[]
 })
 
-const mapDispatch: AlertListActions = {
+const mapDispatch: Actions = {
   _deleteAlert: deleteAlert
 }
 

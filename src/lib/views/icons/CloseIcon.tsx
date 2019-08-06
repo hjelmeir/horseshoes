@@ -1,7 +1,7 @@
 /** @jsx createElement **/
 import { createElement, SFC } from 'react'
 
-interface Props {
+export interface Props {
   id?: string
   viewbox?: string
 }

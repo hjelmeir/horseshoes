@@ -1,9 +1,9 @@
-import * as alerts from './alert/AlertsList';
-import * as close from './icons/CloseIcon';
+import * as Alerts from './alert/AlertsList';
+import * as CloseIcon from './icons/CloseIcon';
 
 export const UI = {
-  alerts,
+  alerts: Alerts.default,
   icons: {
-    close
+    close: CloseIcon.default
   }
 };
