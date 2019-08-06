@@ -67,7 +67,7 @@ export const updateResource = <M extends Resource>(
 export const updateResources = <M extends Resource>(
   state: Resources<M>,
   payload?: M[]
-): Resources<M> => {
+): Resources<M> => {  
   if (!payload || !Array.isArray(payload)) {
     return produce(state, (newState: Resources<M>) => {
       newState.error = true
@@ -76,7 +76,6 @@ export const updateResources = <M extends Resource>(
   }
 
   return produce(state, (newState: Resources<M>) => {
-
     payload.forEach(course => {
       newState.keys = union(newState.keys, [course.key])
       newState.data[course.key] = merge(newState.data[course.key] || {}, course)
