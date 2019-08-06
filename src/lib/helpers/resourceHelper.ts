@@ -60,7 +60,7 @@ export const updateResource = <M extends Resource>(
 
   return produce(state, (newState: Resources<M>) => {
     newState.keys = union(newState.keys, [payload.key]);
-    newState.data[payload.key] = merge(newState.data[payload.key], payload);
+    newState.data[payload.key] = merge(newState.data[payload.key] || {}, payload);
   }) as Resources<M>;
 };
 
@@ -71,14 +71,15 @@ export const updateResources = <M extends Resource>(
   if (!payload || !Array.isArray(payload)) {
     return produce(state, (newState: Resources<M>) => {
       newState.error = true
-      newState.errorTrace['updateResources'] = `Missng payload, or payload is not array. Payload: ${payload}`
+      newState.errorTrace['updateResources'] = `Missing payload, or payload is not array. Payload: ${payload}`
     })
   }
 
   return produce(state, (newState: Resources<M>) => {
+
     payload.forEach(course => {
       newState.keys = union(newState.keys, [course.key])
-      newState.data[course.key] = merge(newState.data[course.key], payload)
+      newState.data[course.key] = merge(newState.data[course.key] || {}, course)
     })
   }) as Resources<M>;
 }
