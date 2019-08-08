@@ -1,6 +1,6 @@
 // tslint:disable:no-expression-statement
 import test from 'ava';
-import { initResources, defaultResources, createResource } from './resourceHelper';
+import { initResources, defaultResources, createResource, upsertResource } from './resourceHelper';
 import { createAlert } from '../controllers/alertController'
 import { Resources } from '../models/resource';
 import { ALERT, Alert, AlertAction, defaultAlert } from '../models/alert'
@@ -20,6 +20,17 @@ const state2: Resources<Alert> = {
   ...state0,
   keys: ['alert1', 'alert2'],
   data: { alert1, alert2 }
+}
+const state3: Resources<Alert> = {
+  ...state0,
+  keys: ['alert1', 'alert2'],
+  data: {
+    alert1,
+    alert2: {
+      ...alert2,
+      status: 'success'
+    }
+  }
 }
 
 test('initResources sets default state', t => {
@@ -47,4 +58,8 @@ test('createResource errs if key exists', t => {
   }
 
   t.deepEqual(nextState, createResource(state1, alert1, defaultAlert))
+})
+
+test('updateResource', t => {
+  t.deepEqual(state3, upsertResource(state2, { ...alert2, status: 'success' }, defaultAlert))
 })
