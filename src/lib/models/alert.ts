@@ -11,7 +11,7 @@ export enum ALERT {
 export interface Alert extends Resource {
   key: string;
   status: "success" | "warning" | "error" | "generic";
-  message: string;
+  message: string | string[];
   dismissable?: boolean;
   dismissAfter?: number;
 }

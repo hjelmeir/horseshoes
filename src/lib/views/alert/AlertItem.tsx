@@ -1,5 +1,5 @@
 /** @jsx createElement */
-import { createElement, SFC } from 'react'
+import { createElement, SFC, ReactNode } from 'react'
 import { Alert } from '../../models/alert'
 import CloseIcon from '../icons/CloseIcon'
 
@@ -8,20 +8,32 @@ export interface AlertItemProps {
   dismissHandler: (alert: Alert) => void
 }
 
-const AlertItem: SFC<AlertItemProps> = ({ dismissHandler, alert }) => (
-  <div className={`alert ${alert.status}`}>
-    {alert.message}
-    {alert.dismissable && (
-      <button
-        onClick={() => {
-          dismissHandler(alert)
-        }}
-        className="close icon"
-      >
-        <CloseIcon />
-      </button>
-    )}
-  </div>
-)
+const _renderMessages = (messages: string[]): ReactNode => {
+  return (
+    <ul>
+      {messages.map(m => <li>{m}</li>)}
+    </ul>
+  )
+}
+
+const AlertItem: SFC<AlertItemProps> = ({ dismissHandler, alert }) => {
+  let message = Array.isArray(alert.message) ? _renderMessages(alert.message) : alert.message
+
+  return (
+    <div className={`alert ${alert.status}`}>
+      {message}
+      {alert.dismissable && (
+        <button
+          onClick={() => {
+            dismissHandler(alert)
+          }}
+          className="close icon"
+        >
+          <CloseIcon />
+        </button>
+      )}
+    </div>
+  )
+}
 
 export default AlertItem
