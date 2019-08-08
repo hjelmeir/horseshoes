@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.9.0](https://github.com/Unicorn/horseshoes/compare/v0.7.2...v0.9.0) (2019-08-08)
+
+
+### Bug Fixes
+
+* **uuid and alerts cleanup:** adding in uuid and refactoring alerts ([aa8ac1f](https://github.com/Unicorn/horseshoes/commit/aa8ac1f))
+
+
+### Features
+
+* **alerts:** alerts dismiss automatically ([67dc7f2](https://github.com/Unicorn/horseshoes/commit/67dc7f2))
+
+
+
 ### [0.7.3](https://github.com/Unicorn/horseshoes/compare/v0.7.0...v0.7.3) (2019-08-08)
 
 
