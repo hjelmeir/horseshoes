@@ -1,5 +1,5 @@
 import { createResource, deleteResource, initResources } from "../helpers";
-import { ALERT, Alert, AlertAction, defaultAlert, Resources } from "../models";
+import { ALERT, Alert, AlertAction, Resources } from "../models";
 
 /**
  * Publish an alert
@@ -29,7 +29,7 @@ export const alertReducer = (
 
   switch (type) {
     case ALERT.CREATE:
-      return createResource<Alert>(state, payload, defaultAlert);
+      return createResource<Alert>(state, payload);
 
     case ALERT.DELETE:
       return deleteResource<Alert>(state, payload);
