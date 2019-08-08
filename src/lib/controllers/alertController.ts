@@ -1,5 +1,5 @@
 import { createResource, deleteResource, initResources } from "../helpers";
-import { ALERT, Alert, AlertAction, Resources } from "../models";
+import { ALERT, Alert, AlertAction, defaultAlert, Resources } from "../models";
 
 /**
  * Publish an alert
@@ -20,16 +20,15 @@ export const deleteAlert = (payload: Alert): AlertAction => ({
 });
 
 export const alertReducer = (
-  state: Resources<Alert>,
-  action: AlertAction
+  state: Resources<Alert> = initResources<Alert>(),
+  { type, payload }: AlertAction
 ): Resources<Alert> => {
-  if (state === undefined) return initResources<Alert>();
-
-  const { type, payload } = action;
+  
+  if (!type || !payload) return state
 
   switch (type) {
     case ALERT.CREATE:
-      return createResource<Alert>(state, payload);
+      return createResource<Alert>(state, payload, defaultAlert);
 
     case ALERT.DELETE:
       return deleteResource<Alert>(state, payload);

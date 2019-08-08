@@ -20,3 +20,14 @@ export interface AlertAction {
   readonly type: ALERT;
   readonly payload?: Alert;
 }
+
+//
+// Data
+//
+export const defaultAlert: Alert = {
+  key: "alert",
+  status: "generic",
+  message: "No message",
+  dismissable: true,
+  dismissAfter: 3000
+};

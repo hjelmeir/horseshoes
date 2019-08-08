@@ -48,6 +48,27 @@ export const createResource = <M extends Resource>(
     newState.keys = union(newState.keys, [payload.key]);
     newState.data[payload.key] = merge(
       defaultResource,
+      payload
+    );
+  }) as Resources<M>;
+};
+
+export const upsertResource = <M extends Resource>(
+  state: Resources<M>,
+  payload?: M,
+  defaultResource?: M
+): Resources<M> => {
+  if (!payload || !payload.key) {
+    return produce(state, (newState: Resources<M>) => {
+      newState.error = true
+      newState.errorTrace['upsertResourcePayload'] = `Missing payload or key: Type: ${typeof payload}, Payload: ${payload}`
+    })
+  }
+
+  return produce(state, (newState: Resources<M>) => {
+    newState.keys = union(newState.keys, [payload.key]);
+    newState.data[payload.key] = merge(
+      defaultResource,
       newState.data[payload.key],
       payload
     );
