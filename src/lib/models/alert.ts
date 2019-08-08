@@ -4,8 +4,12 @@ import { Resource } from "./resource";
 // Types
 //
 export enum ALERT {
-  CREATE = "app/alert/CREATE_ALERT",
-  DELETE = "app/alert/DELETE_ALERT"
+  CREATE = "app/alert/create",
+  DELETE = "app/alert/delete"
+}
+
+export enum ALERTS {
+  DELETE = "app/alerts/DELETE"
 }
 
 export interface Alert extends Resource {
@@ -17,7 +21,7 @@ export interface Alert extends Resource {
 }
 
 export interface AlertAction {
-  readonly type: ALERT;
+  readonly type: ALERT | ALERTS;
   readonly payload?: Alert;
 }
 

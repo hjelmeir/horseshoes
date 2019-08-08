@@ -1,6 +1,7 @@
 /** @jsx createElement */
 import { createElement, SFC } from 'react'
 import { connect } from 'react-redux'
+import { v4 } from 'uuid'
 import { deleteAlert } from '../../controllers/alertController'
 import { toArray } from '../../helpers/resourceHelper'
 import { Alert } from '../../models'
@@ -20,7 +21,7 @@ const AlertsList: SFC<Connected & Actions> = ({ alerts, _deleteAlert }) => {
   return (
     <div className="alerts">
       {alerts.map((alert: Alert) => (
-        <AlertItem alert={alert} dismissHandler={_deleteAlert} key={alert.key} />
+        <AlertItem alert={alert} dismissHandler={_deleteAlert} key={v4()} />
       ))}
     </div>
   )

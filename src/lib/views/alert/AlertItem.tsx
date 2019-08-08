@@ -1,5 +1,6 @@
 /** @jsx createElement */
 import { createElement, SFC, ReactNode } from 'react'
+import { v4 } from 'uuid'
 import { Alert } from '../../models/alert'
 import CloseIcon from '../icons/CloseIcon'
 
@@ -11,7 +12,7 @@ export interface AlertItemProps {
 const _renderMessages = (messages: string[]): ReactNode => {
   return (
     <ul>
-      {messages.map(m => <li>{m}</li>)}
+      {messages.map(m => <li key={v4()}>{m}</li>)}
     </ul>
   )
 }
