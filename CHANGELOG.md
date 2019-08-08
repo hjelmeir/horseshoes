@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.2](https://github.com/Unicorn/horseshoes/compare/v0.9.0...v0.9.2) (2019-08-08)
+
+
+### Tests
+
+* **upsertresource:** test to ensure working upsertResource() ([6193912](https://github.com/Unicorn/horseshoes/commit/6193912))
+
+
+
 ## [0.9.0](https://github.com/Unicorn/horseshoes/compare/v0.7.2...v0.9.0) (2019-08-08)
 
 
