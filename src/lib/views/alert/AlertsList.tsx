@@ -18,6 +18,10 @@ export interface Actions {
 const AlertsList: SFC<Connected & Actions> = ({ alerts, _deleteAlert }) => {
   if (!alerts || alerts.length < 1) { return null }
 
+  alerts.forEach(alert => alert.dismissAfter && setTimeout(() => {
+    _deleteAlert(alert)
+  }, alert.dismissAfter))
+
   return (
     <div className="alerts">
       {alerts.map((alert: Alert) => (
