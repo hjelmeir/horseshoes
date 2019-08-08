@@ -33,7 +33,14 @@ export const createResource = <M extends Resource>(
   if (!payload || !payload.key) {
     return produce(state, (newState: Resources<M>) => {
       newState.error = true
-      newState.errorTrace['createResource'] = `Missing payload or key: Type: ${typeof payload}, Payload: ${payload}`
+      newState.errorTrace['createResourcePayload'] = `Missing payload or key: Type: ${typeof payload}, Payload: ${payload}`
+    })
+  }
+
+  if (state.data[payload.key]) {
+    return produce(state, (newState: Resources<M>) => {
+      newState.error = true
+      newState.errorTrace['createResourceExists'] = `Key already exists in state, key: ${payload.key}`
     })
   }
 
@@ -67,7 +74,7 @@ export const updateResource = <M extends Resource>(
 export const updateResources = <M extends Resource>(
   state: Resources<M>,
   payload?: M[]
-): Resources<M> => {  
+): Resources<M> => {
   if (!payload || !Array.isArray(payload)) {
     return produce(state, (newState: Resources<M>) => {
       newState.error = true
