@@ -1,6 +1,6 @@
 {
   "name": "horseshoes",
-  "version": "0.9.2",
+  "version": "0.10.1",
   "description": "A suite of react components, helpers, and model definitions for a normalized React/Redux stack",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
