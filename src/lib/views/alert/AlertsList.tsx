@@ -3,7 +3,7 @@ import { createElement, SFC } from 'react'
 import { connect } from 'react-redux'
 import { v4 } from 'uuid'
 import { deleteAlert } from '../../controllers/alertController'
-import { toArray } from '../../helpers/resourceHelper'
+import { toArray } from '../../helpers/resourceMethods'
 import { Alert } from '../../models'
 import AlertItem from './AlertItem'
 
