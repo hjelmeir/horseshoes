@@ -8,10 +8,10 @@ export interface Resources<M> {
   data: {
     [key: string]: M;
   };
-  error: boolean
+  error: boolean;
   errorTrace: {
-    [key: string]: string
-  }
+    [key: string]: string;
+  };
 }
 
 export interface ResourceAction<M> {

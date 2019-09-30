@@ -1,5 +1,12 @@
-import { createResource, deleteResource, initResources } from "../helpers";
-import { ALERTS, ALERT, Alert, AlertAction, defaultAlert, Resources } from "../models";
+import { createResource, deleteResource, initResources } from '../helpers';
+import {
+  ALERT,
+  Alert,
+  AlertAction,
+  ALERTS,
+  defaultAlert,
+  Resources
+} from '../models';
 
 /**
  * Publish an alert
@@ -17,16 +24,17 @@ export const deleteAlert = (payload: Alert): AlertAction => ({
   payload
 });
 
-export const deleteAlerts = ():  AlertAction => ({
+export const deleteAlerts = (): AlertAction => ({
   type: ALERTS.DELETE
-})
+});
 
 export const alertReducer = (
   state: Resources<Alert> = initResources<Alert>(),
   { type, payload }: AlertAction
 ): Resources<Alert> => {
-
-  if (!type || !payload) return state
+  if (!type || !payload) {
+    return state;
+  }
 
   switch (type) {
     case ALERTS.DELETE:

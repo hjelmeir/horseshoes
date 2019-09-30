@@ -1,15 +1,17 @@
-/** @jsx createElement */
-import { createElement, SFC, ReactNode } from 'react'
+/**
+ * @jsx createElement
+ */
+import { createElement, ReactNode, SFC } from 'react'
 import { v4 } from 'uuid'
 import { Alert } from '../../models/alert'
 import CloseIcon from '../icons/CloseIcon'
 
 export interface AlertItemProps {
-  alert: Alert
-  dismissHandler: (alert: Alert) => void
+  readonly alert: Alert
+  readonly dismissHandler: (alert: Alert) => void
 }
 
-const _renderMessages = (messages: string[]): ReactNode => {
+const renderMessages = (messages: readonly string[]): ReactNode => {
   return (
     <ul>
       {messages.map(m => <li key={v4()}>{m}</li>)}
@@ -18,7 +20,7 @@ const _renderMessages = (messages: string[]): ReactNode => {
 }
 
 const AlertItem: SFC<AlertItemProps> = ({ dismissHandler, alert }) => {
-  let message = Array.isArray(alert.message) ? _renderMessages(alert.message) : alert.message
+  const message = Array.isArray(alert.message) ? renderMessages(alert.message) : alert.message
 
   return (
     <div className={`alert ${alert.status}`}>

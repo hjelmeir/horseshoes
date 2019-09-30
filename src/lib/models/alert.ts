@@ -1,23 +1,23 @@
-import { Resource } from "./resource";
+import { Resource } from './resource';
 
 //
 // Types
 //
 export enum ALERT {
-  CREATE = "app/alert/create",
-  DELETE = "app/alert/delete"
+  CREATE = 'app/alert/create',
+  DELETE = 'app/alert/delete'
 }
 
 export enum ALERTS {
-  DELETE = "app/alerts/DELETE"
+  DELETE = 'app/alerts/DELETE'
 }
 
 export interface Alert extends Resource {
-  key: string;
-  status: "success" | "warning" | "error" | "generic";
-  message: string | string[];
-  dismissable?: boolean;
-  dismissAfter?: number;
+  readonly key: string;
+  readonly status: 'success' | 'warning' | 'error' | 'generic';
+  readonly message: string | readonly string[];
+  readonly dismissable?: boolean;
+  readonly dismissAfter?: number;
 }
 
 export interface AlertAction {
@@ -29,9 +29,9 @@ export interface AlertAction {
 // Data
 //
 export const defaultAlert: Alert = {
-  key: "alert",
-  status: "generic",
-  message: "No message",
+  key: 'alert',
+  status: 'generic',
+  message: 'No message',
   dismissable: true,
   dismissAfter: 3000
 };

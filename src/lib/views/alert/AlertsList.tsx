@@ -1,4 +1,6 @@
-/** @jsx createElement */
+/**
+ * @jsx createElement
+ */
 import { createElement, SFC } from 'react'
 import { connect } from 'react-redux'
 import { v4 } from 'uuid'

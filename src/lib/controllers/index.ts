@@ -1,2 +1,2 @@
-export * from "./ipcController";
-export * from "./alertController";
+export * from './ipcController';
+export * from './alertController';

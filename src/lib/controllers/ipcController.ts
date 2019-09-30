@@ -1,16 +1,16 @@
-import { Event, IpcRenderer } from "electron";
-import { Action, MiddlewareAPI, Middleware, Dispatch } from "redux";
+import { Event, IpcRenderer } from 'electron';
+import { Action, Dispatch, Middleware, MiddlewareAPI } from 'redux';
 
 declare global {
   interface Window {
-    ipc: IpcRenderer;
+    readonly ipc: IpcRenderer;
   }
 }
 
 export type ipcDispatch = (event: Event, type: string, payload: any) => Action;
 
 export interface IpcDispatchEvent {
-  [key: string]: ipcDispatch;
+  readonly [key: string]: ipcDispatch;
 }
 
 export const ipcResourceHandler: ipcDispatch = (_, type, payload) => ({
@@ -22,18 +22,20 @@ export const createIpcMiddleware = (
   renderer: IpcRenderer,
   events: IpcDispatchEvent = {}
 ): Middleware<{}, any, Dispatch> => {
-  if (typeof events !== "object")
+  if (typeof events !== 'object') {
     throw new TypeError(
       `ipcListeners expects an events object as its first parameter, you passed type "${typeof events}"`
     );
+  }
 
   Object.keys(events).forEach(key => {
-    if (typeof events[key] !== "function")
+    if (typeof events[key] !== 'function') {
       throw new TypeError(
         `Each key in ipcListeners's must reference a dispatchable function, key "${key}" is of type "${typeof events[
           key
         ]}"`
       );
+    }
   });
 
   return ({ dispatch }: MiddlewareAPI) => {

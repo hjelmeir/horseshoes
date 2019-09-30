@@ -1,2 +1,2 @@
-export * from "./alert";
-export * from "./resource";
+export * from './alert';
+export * from './resource';
