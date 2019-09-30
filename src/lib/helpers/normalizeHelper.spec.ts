@@ -2,8 +2,8 @@ import test from 'ava';
 import { camelizeKeys } from './normalizeHelper';
 
 test('camelizeKeys converts numeric indexes to string', t => {
-  const dirty = { 0: '0', 1: '1' };
-  const clean = { '0': '0', '1': '1' };
+  const dirty = { 0: ['a', 'b', 'c'], 1: '1' };
+  const clean = { '0': ['a', 'b', 'c'], '1': '1' };
   t.deepEqual(clean, camelizeKeys(dirty));
 });
 

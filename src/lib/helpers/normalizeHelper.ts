@@ -26,7 +26,7 @@ export const camelizeKeys = (obj: Dirty): Clean => {
   const nextState = {};
   Object.keys(obj).forEach(k => {
     nextState[camelize(k)] = obj[k]
-      ? typeof obj[k] === 'object'
+      ? typeof obj[k] === 'object' && obj[k].constructor.name === 'Object'
         ? camelizeKeys(obj[k])
         : obj[k]
       : null;
