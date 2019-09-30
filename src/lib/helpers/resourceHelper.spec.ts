@@ -82,6 +82,8 @@ test('createResource errs if key exists', t => {
 });
 
 test('updateResource', t => {
+  t.deepEqual(state3, upsertResource(state2, { ...alert2, status: 'success' }));
+
   t.deepEqual(
     state3,
     upsertResource(state2, { ...alert2, status: 'success' }, defaultAlert)

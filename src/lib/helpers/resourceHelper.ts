@@ -1,5 +1,5 @@
 import { produce } from 'immer';
-import { merge, union } from 'lodash';
+import { union } from 'lodash';
 import { Resource, Resources } from '../models/resource';
 import { toArray } from './resourceMethods';
 
@@ -41,7 +41,7 @@ export const createResource = <M extends Resource>(
 
   return produce(state, (newState: Resources<M>) => {
     newState.keys = union(newState.keys, [payload.key]);
-    newState.data[payload.key] = merge(defaultResource, payload);
+    newState.data[payload.key] = { ...defaultResource, ...payload };
   });
 };
 
@@ -59,11 +59,11 @@ export const upsertResource = <M extends Resource>(
 
   return produce(state, (newState: Resources<M>) => {
     newState.keys = union(newState.keys, [payload.key]);
-    newState.data[payload.key] = merge(
-      defaultResource,
-      newState.data[payload.key],
-      payload
-    );
+    newState.data[payload.key] = {
+      ...defaultResource,
+      ...newState.data[payload.key],
+      ...payload
+    };
   });
 };
 
@@ -80,10 +80,10 @@ export const updateResource = <M extends Resource>(
 
   return produce(state, (newState: Resources<M>) => {
     newState.keys = union(newState.keys, [payload.key]);
-    newState.data[payload.key] = merge(
-      newState.data[payload.key] || {},
-      payload
-    );
+    newState.data[payload.key] = {
+      ...newState.data[payload.key],
+      ...payload
+    };
   });
 };
 
@@ -101,10 +101,10 @@ export const updateResources = <M extends Resource>(
   return produce(state, (newState: Resources<M>) => {
     payload.forEach(course => {
       newState.keys = union(newState.keys, [course.key]);
-      newState.data[course.key] = merge(
-        newState.data[course.key] || {},
-        course
-      );
+      newState.data[course.key] = {
+        ...newState.data[course.key],
+        ...course
+      };
     });
   });
 };

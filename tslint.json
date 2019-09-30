@@ -14,7 +14,7 @@
       "dev"
     ],
     "no-var-keyword": true,
-    "no-parameter-reassignment": true,
+    "no-parameter-reassignment": false,
     "typedef": [
       true,
       "call-signature"
