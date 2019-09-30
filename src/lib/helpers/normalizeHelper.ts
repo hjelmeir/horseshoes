@@ -25,8 +25,11 @@ const camelize = (key: string) => {
 export const camelizeKeys = (obj: Dirty): Clean => {
   const nextState = {};
   Object.keys(obj).forEach(k => {
-    nextState[camelize(k)] =
-      typeof obj[k] === 'object' ? camelizeKeys(obj[k]) : obj[k];
+    nextState[camelize(k)] = obj[k]
+      ? typeof obj[k] === 'object'
+        ? camelizeKeys(obj[k])
+        : obj[k]
+      : null;
   });
   return nextState;
 };
@@ -37,12 +40,12 @@ export const scrubPayload = <T extends Clean>(payload: T): Resource => {
   return { ...payload, key };
 };
 
-export const normalizePayload = (payload: Dirty | Dirty[]): Dirty | Dirty[] => {
+export const normalizePayload = (payload: Dirty | Dirty[]): Clean | Clean[] => {
   if (Array.isArray(payload)) {
     return (payload as Dirty[]).map(r => ({
       ...scrubPayload(camelizeKeys(r))
-    })) as Dirty[];
+    })) as Clean[];
   }
 
-  return scrubPayload(camelizeKeys(payload));
+  return scrubPayload(camelizeKeys(payload)) as Clean;
 };

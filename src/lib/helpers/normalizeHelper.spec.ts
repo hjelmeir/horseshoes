@@ -32,3 +32,17 @@ test('camelizeKeys works recursively', t => {
 
   t.deepEqual(clean, camelizeKeys(dirty));
 });
+
+test('camelizeKeys handles empty keys and values', t => {
+  const dirty = {
+    foo_bar: undefined,
+    bar_baz: null
+  };
+
+  const clean = {
+    fooBar: null,
+    barBaz: null
+  };
+
+  t.deepEqual(clean, camelizeKeys(dirty));
+});
