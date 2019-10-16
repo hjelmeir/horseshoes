@@ -1,12 +1,11 @@
 /**
  * @jsx createElement
  */
-import { createElement, SFC, SyntheticEvent, useState } from 'react'
+import { createElement, SFC, SyntheticEvent } from 'react'
 import { TextFieldProps } from './types'
 
-const TextField: SFC<TextFieldProps> = ({ name, type, label, validate, onValid, onInvalid, onChange, ...inputProps }) => {
-  const [valid, setValid] = useState(true)
-  const classes = ['field', type]
+const TextField: SFC<TextFieldProps> = ({ name, type, label, validate, valid, onValidate, onValid, onInvalid, onChange, ...inputProps }) => {
+  const classes = ['field', type, `valid-${valid}`]
   validate && valid ? classes.push('valid') : classes.push('invalid')
   inputProps.value && inputProps.value.length > 0 ? classes.push('not-empty') : classes.push('empty')
 
@@ -16,6 +15,7 @@ const TextField: SFC<TextFieldProps> = ({ name, type, label, validate, onValid, 
     }
 
     const [isValid, error] = validate(value)
+
     if (isValid === true && onValid) {
       onValid()
     }
@@ -24,7 +24,9 @@ const TextField: SFC<TextFieldProps> = ({ name, type, label, validate, onValid, 
       onInvalid(error)
     }
 
-    setValid(isValid === true)
+    if (onValidate) {
+      onValidate(isValid === true)
+    }
   }
 
   const changeHandler = (e: SyntheticEvent<HTMLInputElement>): void => {

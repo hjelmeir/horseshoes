@@ -1,7 +1,7 @@
 /**
  * @jsx createElement
  */
-import { createElement, ReactNode, SFC, SyntheticEvent, useState } from 'react'
+import { createElement, ReactNode, SFC, SyntheticEvent } from 'react'
 import ChevronDownIcon from '../icons/ChevronDownIcon'
 import { OptionsObject, SelectFieldProps } from './types'
 
@@ -23,10 +23,8 @@ const renderSelectOptions = (options?: OptionsObject): ReactNode => {
   return items
 }
 
-const SelectField: SFC<SelectFieldProps> = ({ name, type, label, options, validate, onValid, onInvalid, onChange, ...inputProps }) => {
-  const [valid, setValid] = useState(true)
-  const classes = ['field', type]
-  validate && valid ? classes.push('valid') : classes.push('invalid')
+const SelectField: SFC<SelectFieldProps> = ({ name, type, label, options, valid, validate, onValidate, onValid, onInvalid, onChange, ...inputProps }) => {
+  const classes = ['field', type, `valid-${valid}`]
   inputProps.value && inputProps.value.length > 0 ? classes.push('not-empty') : classes.push('empty')
 
   const validateHandler = (value: string): void => {
@@ -35,6 +33,7 @@ const SelectField: SFC<SelectFieldProps> = ({ name, type, label, options, valida
     }
 
     const [isValid, error] = validate(value)
+
     if (isValid === true && onValid) {
       onValid()
     }
@@ -43,7 +42,9 @@ const SelectField: SFC<SelectFieldProps> = ({ name, type, label, options, valida
       onInvalid(error)
     }
 
-    setValid(isValid === true)
+    if (onValidate) {
+      onValidate(isValid === true)
+    }
   }
 
   const changeHandler = (e: SyntheticEvent<HTMLSelectElement>): void => {

@@ -1,10 +1,10 @@
 /**
  * @jsx createElement
  */
-import { createElement, ReactNode, SFC, useState } from 'react'
+import { createElement, ReactNode, SFC, SyntheticEvent } from 'react'
 import { OptionsObject, RadioFieldProps } from './types'
 
-const renderRadioOptions = ({ name, selected, onChange }: RadioFieldProps, options?: OptionsObject): ReactNode => {
+const renderRadioOptions = (name: string, selected: string = '', onChange: (e: SyntheticEvent<HTMLInputElement>) => void, options?: OptionsObject): ReactNode => {
   if (!options) {
     return null
   }
@@ -17,13 +17,8 @@ const renderRadioOptions = ({ name, selected, onChange }: RadioFieldProps, optio
   ))
 }
 
-const RadioField: SFC<RadioFieldProps> = props => {
-  const { name, type, label, options, validate, onValid, onInvalid, onChange, ...inputProps } = props
-  const field = null
-
-  const [valid, setValid] = useState(true)
-  const classes = ['field', type]
-  validate && valid ? classes.push('valid') : classes.push('invalid')
+const RadioField: SFC<RadioFieldProps> = ({ name, type, label, options, validate, valid, onValidate, onValid, onInvalid, onChange, ...inputProps }) => {
+  const classes = ['field', type, `valid-${valid}`]
   inputProps.value && inputProps.value.length > 0 ? classes.push('not-empty') : classes.push('empty')
 
   const validateHandler = (value: string): void => {
@@ -32,6 +27,7 @@ const RadioField: SFC<RadioFieldProps> = props => {
     }
 
     const [isValid, error] = validate(value)
+
     if (isValid === true && onValid) {
       onValid()
     }
@@ -40,10 +36,12 @@ const RadioField: SFC<RadioFieldProps> = props => {
       onInvalid(error)
     }
 
-    setValid(isValid === true)
+    if (onValidate) {
+      onValidate(isValid === true)
+    }
   }
 
-  const changeHandler = (e: React.SyntheticEvent<HTMLInputElement>): void => {
+  const changeHandler = (e: SyntheticEvent<HTMLInputElement>): void => {
     if (validate && !valid) {
       validateHandler(e.currentTarget.value)
     }
@@ -51,7 +49,7 @@ const RadioField: SFC<RadioFieldProps> = props => {
     onChange(e)
   }
 
-  const blurHandler = (e: React.SyntheticEvent<HTMLInputElement>): void => {
+  const blurHandler = (e: SyntheticEvent<HTMLInputElement>): void => {
     if (validate) {
       validateHandler(e.currentTarget.value)
     }
@@ -71,13 +69,12 @@ const RadioField: SFC<RadioFieldProps> = props => {
       return (
         <div className={classes.join(' ')}>
           <span className="header">{label}</span>
-          <div className="options">{renderRadioOptions(props, options)}</div>
+          <div className="options">{renderRadioOptions(name, inputProps.selected, onChange, options)}</div>
         </div>
       )
     default:
       return (
         <div className={classes.join(' ')}>
-          {field}
           <label htmlFor={name}>{label}</label>
           <span />
         </div>

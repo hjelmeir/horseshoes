@@ -7,8 +7,10 @@ export interface FieldProps {
   required?: boolean;
   checked?: boolean;
   value?: string;
+  valid?: boolean
 
   validate?: (value: string) => [boolean, string];
+  onValidate?: (value: boolean) => void
   onValid?: () => void;
   onInvalid?: (error: string) => void;
 }

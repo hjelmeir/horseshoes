@@ -1,13 +1,11 @@
 /**
  * @jsx createElement
  */
-import { createElement, SFC, SyntheticEvent, useState } from 'react'
+import { createElement, SFC, SyntheticEvent } from 'react'
 import { TextAreaFieldProps } from './types'
 
-const TextAreaField: SFC<TextAreaFieldProps> = ({ name, type, label, validate, onValid, onInvalid, onChange, ...inputProps }) => {
-  const [valid, setValid] = useState(true)
-  const classes = ['field', type]
-  validate && valid ? classes.push('valid') : classes.push('invalid')
+const TextAreaField: SFC<TextAreaFieldProps> = ({ name, type, label, validate, valid, onValidate, onValid, onInvalid, onChange, ...inputProps }) => {
+  const classes = ['field', type, `valid-${valid}`]
   inputProps.value && inputProps.value.length > 0 ? classes.push('not-empty') : classes.push('empty')
 
   const validateHandler = (value: string): void => {
@@ -16,6 +14,7 @@ const TextAreaField: SFC<TextAreaFieldProps> = ({ name, type, label, validate, o
     }
 
     const [isValid, error] = validate(value)
+
     if (isValid === true && onValid) {
       onValid()
     }
@@ -24,7 +23,9 @@ const TextAreaField: SFC<TextAreaFieldProps> = ({ name, type, label, validate, o
       onInvalid(error)
     }
 
-    setValid(isValid === true)
+    if (onValidate) {
+      onValidate(isValid === true)
+    }
   }
 
   const changeHandler = (e: SyntheticEvent<HTMLTextAreaElement>): void => {
