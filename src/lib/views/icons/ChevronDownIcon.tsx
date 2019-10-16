@@ -2,7 +2,7 @@
  * @jsx createElement 
  */
 import { createElement, SFC } from 'react'
-import { IconProps } from './index'
+import { IconProps } from './types'
 
 const CloseIcon: SFC<IconProps> = ({ id, viewbox = '0 0 100 100' }) => (
   <svg id={id} version="1.1" viewBox={viewbox} xmlns="http://www.w3.org/2000/svg">

@@ -1,4 +1,2 @@
-export interface IconProps {
-  readonly id?: string;
-  readonly viewbox?: string;
-}
+export * from './CloseIcon';
+export * from './ChevronDownIcon';
