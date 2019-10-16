@@ -45,7 +45,7 @@ export function toArray<M extends Resource>(
 }
 
 export function toOptions<M extends Resource>(
-  resource: M,
+  resource: Resources<M>,
   ident: string
 ): OptionsObject {
   const options: OptionsObject = {};

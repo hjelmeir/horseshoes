@@ -2,12 +2,7 @@
  * @jsx createElement
  */
 import { createElement, SFC, SyntheticEvent, useState } from 'react'
-import { FieldProps } from './types'
-
-export interface TextAreaFieldProps extends FieldProps {
-  type: 'textarea'
-  onChange: (e: SyntheticEvent<HTMLTextAreaElement>) => void
-}
+import { TextAreaFieldProps } from './types'
 
 const TextAreaField: SFC<TextAreaFieldProps> = ({ name, type, label, validate, onValid, onInvalid, onChange, ...inputProps }) => {
   const [valid, setValid] = useState(true)
@@ -32,7 +27,7 @@ const TextAreaField: SFC<TextAreaFieldProps> = ({ name, type, label, validate, o
     setValid(isValid === true)
   }
 
-  const changeHandler = (e: React.SyntheticEvent<HTMLTextAreaElement>): void => {
+  const changeHandler = (e: SyntheticEvent<HTMLTextAreaElement>): void => {
     if (validate && !valid) {
       validateHandler(e.currentTarget.value)
     }
@@ -40,7 +35,7 @@ const TextAreaField: SFC<TextAreaFieldProps> = ({ name, type, label, validate, o
     onChange(e)
   }
 
-  const blurHandler = (e: React.SyntheticEvent<HTMLTextAreaElement>): void => {
+  const blurHandler = (e: SyntheticEvent<HTMLTextAreaElement>): void => {
     if (validate) {
       validateHandler(e.currentTarget.value)
     }

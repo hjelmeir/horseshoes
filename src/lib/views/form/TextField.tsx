@@ -1,13 +1,8 @@
 /**
  * @jsx createElement
  */
-import { createElement, SFC, useState } from 'react'
-import { FieldProps } from './types'
-
-interface TextFieldProps extends FieldProps {
-  type: 'text' | 'email' | 'password'
-  onChange: (e: React.SyntheticEvent<HTMLInputElement>) => void
-}
+import { createElement, SFC, SyntheticEvent, useState } from 'react'
+import { TextFieldProps } from './types'
 
 const TextField: SFC<TextFieldProps> = ({ name, type, label, validate, onValid, onInvalid, onChange, ...inputProps }) => {
   const [valid, setValid] = useState(true)
@@ -32,7 +27,7 @@ const TextField: SFC<TextFieldProps> = ({ name, type, label, validate, onValid, 
     setValid(isValid === true)
   }
 
-  const changeHandler = (e: React.SyntheticEvent<HTMLInputElement>): void => {
+  const changeHandler = (e: SyntheticEvent<HTMLInputElement>): void => {
     if (validate && !valid) {
       validateHandler(e.currentTarget.value)
     }
@@ -40,7 +35,7 @@ const TextField: SFC<TextFieldProps> = ({ name, type, label, validate, onValid, 
     onChange(e)
   }
 
-  const blurHandler = (e: React.SyntheticEvent<HTMLInputElement>): void => {
+  const blurHandler = (e: SyntheticEvent<HTMLInputElement>): void => {
     if (validate) {
       validateHandler(e.currentTarget.value)
     }

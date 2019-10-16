@@ -2,12 +2,7 @@
  * @jsx createElement
  */
 import { createElement, ReactNode, SFC, useState } from 'react'
-import { FieldProps, OptionsObject } from './types'
-
-export interface RadioFieldProps extends FieldProps {
-  type: 'toggle' | 'group' | 'tabs'
-  onChange: (e: React.SyntheticEvent<HTMLInputElement>) => void
-}
+import { OptionsObject, RadioFieldProps } from './types'
 
 const renderRadioOptions = ({ name, selected, onChange }: RadioFieldProps, options?: OptionsObject): ReactNode => {
   if (!options) {

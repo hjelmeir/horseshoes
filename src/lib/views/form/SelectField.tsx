@@ -1,14 +1,9 @@
 /**
  * @jsx createElement
  */
-import { createElement, ReactNode, SFC, useState } from 'react'
+import { createElement, ReactNode, SFC, SyntheticEvent, useState } from 'react'
 import ChevronDownIcon from '../icons/ChevronDownIcon'
-import { FieldProps, OptionsObject } from './types'
-
-export interface SelectFieldProps extends FieldProps {
-  type: 'select' | 'textarea' | 'toggle' | 'group' | 'tabs'
-  onChange: (e: React.SyntheticEvent<HTMLSelectElement>) => void
-}
+import { OptionsObject, SelectFieldProps } from './types'
 
 const renderSelectOptions = (options?: OptionsObject): ReactNode => {
   const items = [<option key="default" />]
@@ -51,7 +46,7 @@ const SelectField: SFC<SelectFieldProps> = ({ name, type, label, options, valida
     setValid(isValid === true)
   }
 
-  const changeHandler = (e: React.SyntheticEvent<HTMLSelectElement>): void => {
+  const changeHandler = (e: SyntheticEvent<HTMLSelectElement>): void => {
     if (validate && !valid) {
       validateHandler(e.currentTarget.value)
     }
@@ -59,7 +54,7 @@ const SelectField: SFC<SelectFieldProps> = ({ name, type, label, options, valida
     onChange(e)
   }
 
-  const blurHandler = (e: React.SyntheticEvent<HTMLSelectElement>): void => {
+  const blurHandler = (e: SyntheticEvent<HTMLSelectElement>): void => {
     if (validate) {
       validateHandler(e.currentTarget.value)
     }

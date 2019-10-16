@@ -5,5 +5,5 @@ import * as icons from './icons/CloseIcon';
 export const UI = {
   alerts: Alerts.default,
   icons,
-  form: Form
+  form: Form.default
 };
