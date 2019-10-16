@@ -1,4 +1,5 @@
 import { Resource, Resources } from '../models/resource';
+import { OptionsObject } from '../views/form/types';
 
 interface SortByDateOpts {
   readonly key: string;
@@ -41,4 +42,19 @@ export function toArray<M extends Resource>(
   }
 
   return nextState;
+}
+
+export function toOptions<M extends Resource>(
+  resource: M,
+  ident: string
+): OptionsObject {
+  const options: OptionsObject = {};
+
+  resource.keys.forEach((key: string) => {
+    options[resource.data[key][ident]] = {
+      label: resource.data[key][ident]
+    };
+  });
+
+  return options;
 }
