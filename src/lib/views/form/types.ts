@@ -30,8 +30,12 @@ export interface RadioFieldProps extends FieldProps {
 }
 
 export interface SelectFieldProps extends FieldProps {
-  type: 'select' | 'textarea' | 'toggle' | 'group' | 'tabs';
+  type: 'select';
+  multiple?: boolean;
+  searchable?: boolean;
   onChange: (e: React.SyntheticEvent<HTMLSelectElement>) => void;
+  selectHandler?: (v: string[]) => void;
+  selectedValues?: string[];
 }
 
 export interface TextAreaFieldProps extends FieldProps {
