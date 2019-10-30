@@ -7,10 +7,11 @@ export interface FieldProps {
   required?: boolean;
   checked?: boolean;
   value?: string;
-  valid?: boolean
+  valid?: boolean;
 
+  normalize?: (value: string) => string;
   validate?: (value: string) => [boolean, string];
-  onValidate?: (value: boolean) => void
+  onValidate?: (value: boolean) => void;
   onValid?: () => void;
   onInvalid?: (error: string) => void;
 }
@@ -24,21 +25,21 @@ export interface OptionsObject {
 }
 
 export interface RadioFieldProps extends FieldProps {
-  type: 'toggle' | 'group' | 'tabs'
-  onChange: (e: React.SyntheticEvent<HTMLInputElement>) => void
+  type: 'toggle' | 'group' | 'tabs';
+  onChange: (e: React.SyntheticEvent<HTMLInputElement>) => void;
 }
 
 export interface SelectFieldProps extends FieldProps {
-  type: 'select' | 'textarea' | 'toggle' | 'group' | 'tabs'
-  onChange: (e: React.SyntheticEvent<HTMLSelectElement>) => void
+  type: 'select' | 'textarea' | 'toggle' | 'group' | 'tabs';
+  onChange: (e: React.SyntheticEvent<HTMLSelectElement>) => void;
 }
 
 export interface TextAreaFieldProps extends FieldProps {
-  type: 'textarea'
-  onChange: (e: React.SyntheticEvent<HTMLTextAreaElement>) => void
+  type: 'textarea';
+  onChange: (e: React.SyntheticEvent<HTMLTextAreaElement>) => void;
 }
 
 export interface TextFieldProps extends FieldProps {
-  type: 'text' | 'email' | 'password'
-  onChange: (e: React.SyntheticEvent<HTMLInputElement>) => void
+  type: 'text' | 'email' | 'password';
+  onChange: (e: React.SyntheticEvent<HTMLInputElement>) => void;
 }

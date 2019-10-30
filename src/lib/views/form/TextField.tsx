@@ -4,9 +4,8 @@
 import { createElement, SFC, SyntheticEvent } from 'react'
 import { TextFieldProps } from './types'
 
-const TextField: SFC<TextFieldProps> = ({ name, type, label, validate, valid, onValidate, onValid, onInvalid, onChange, ...inputProps }) => {
+const TextField: SFC<TextFieldProps> = ({ name, type, label, normalize, validate, valid, onValidate, onValid, onInvalid, onChange, ...inputProps }) => {
   const classes = ['field', type, `valid-${valid}`]
-  validate && valid ? classes.push('valid') : classes.push('invalid')
   inputProps.value && inputProps.value.length > 0 ? classes.push('not-empty') : classes.push('empty')
 
   const validateHandler = (value: string): void => {
@@ -32,6 +31,10 @@ const TextField: SFC<TextFieldProps> = ({ name, type, label, validate, valid, on
   const changeHandler = (e: SyntheticEvent<HTMLInputElement>): void => {
     if (validate && !valid) {
       validateHandler(e.currentTarget.value)
+    }
+
+    if (normalize) {
+      e.currentTarget.value = normalize(e.currentTarget.value)
     }
 
     onChange(e)

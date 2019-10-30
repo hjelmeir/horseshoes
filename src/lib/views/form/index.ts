@@ -7,5 +7,5 @@ export default {
   RadioField,
   SelectField,
   TextAreaField,
-  TextField,
-}
+  TextField
+};
