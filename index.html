@@ -1,0 +1,512 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>horseshoes</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">horseshoes</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> horseshoes</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#horseshoes-for-react-and-redux" id="horseshoes-for-react-and-redux" style="color: inherit; text-decoration: none;">
+					<h1>Horseshoes for React and Redux</h1>
+				</a>
+				<p>A suite of react components, helpers, and model definitions for a normalized React/Redux stack.</p>
+				<a href="#getting-started" id="getting-started" style="color: inherit; text-decoration: none;">
+					<h2>Getting started</h2>
+				</a>
+				<p><strong>Note</strong>: This module is a work in progress and may frequently have breaking changes. It is currently being used in active development and production by Unicorn, however, across a myriad of applications (SPA, Electron, etc). While it is in alpha, you should use specific versions.</p>
+				<p>Install: <code>yarn add horseshoes</code></p>
+				<a href="#why-horseshoes-crud-operations-with-redux-in-practice" id="why-horseshoes-crud-operations-with-redux-in-practice" style="color: inherit; text-decoration: none;">
+					<h2>WHY Horseshoes? CRUD operations with Redux in practice</h2>
+				</a>
+				<p>Since redux is very open and un-opinionated, states can look very different between developers and projects. As such, we&#39;ve aimed to normalize state with a specific schema defined by our <code>Resources</code> type. As an example, all of these are valid approaches for state management, but none of them offer both flexibility and rigidity without careful planning and type definitions:</p>
+				<p><strong>Typical practice with Arrays:</strong>
+				Below is a typical setup seen in many tutorials across the web. The reasoning behind it makes sense: javascript as a functional language has a lot of benefits. However, data should almost never be stored in any meaningful way as an Array. It&#39;s inefficient and despite the saving of verbosity later with method chaining, your reducers and actions suffer the consequences.</p>
+				<pre><code class="language-typescript"><span class="hljs-keyword">const</span> rootState = {
+  tasks: [
+    { id: <span class="hljs-number">0</span>, name: <span class="hljs-string">'my first task'</span>, complete: <span class="hljs-literal">false</span> },
+    { id: <span class="hljs-number">1</span>, name: <span class="hljs-string">'my second task'</span>, complete: <span class="hljs-literal">false</span> },
+    { id: <span class="hljs-number">2</span>, name: <span class="hljs-string">'my completed task'</span>, complete: <span class="hljs-literal">true</span> }
+  ]
+}
+
+<span class="hljs-comment">// This is approach is nice, because it's easy to filter and sort arrays</span>
+<span class="hljs-keyword">const</span> completedTasks = (tasks: Task[]): Task[] =&gt; {
+  <span class="hljs-keyword">return</span> tasks.filter(<span class="hljs-function"><span class="hljs-params">t</span> =&gt;</span> t.complete)
+}
+
+<span class="hljs-comment">// Updating states with this approach, however, is slow and verbose</span>
+<span class="hljs-keyword">const</span> taskReducer = <span class="hljs-function">(<span class="hljs-params">state, { <span class="hljs-keyword">type</span>, payload }</span>) =&gt;</span> {
+  <span class="hljs-keyword">switch</span> (<span class="hljs-keyword">type</span>) {
+    <span class="hljs-comment">// Is this immutable? Depends on if you know about accidental mutations</span>
+    <span class="hljs-comment">// Lots of room for bad practices here: indexOf, array mutations, push/pop</span>
+    <span class="hljs-comment">// Not to mention, this is super inefficient when dealing with large arrays</span>
+    <span class="hljs-keyword">case</span> TASK.UPDATE :
+      <span class="hljs-keyword">let</span> nextState = state.filter(<span class="hljs-function"><span class="hljs-params">t</span> =&gt;</span> t.id !== payload.id)
+      nextState.push(payload)
+      <span class="hljs-keyword">return</span> nextState
+
+    <span class="hljs-comment">// Oh no! More mutations and side effects introduced that aren't obvious!</span>
+    <span class="hljs-keyword">case</span> TASK.DELETE :
+      <span class="hljs-keyword">return</span> state.filter(<span class="hljs-function"><span class="hljs-params">t</span> =&gt;</span> t.id !== payload.id)
+
+    <span class="hljs-keyword">default</span> :
+      <span class="hljs-keyword">return</span> state
+  }
+}</code></pre>
+				<p><strong>Typical practice with an Object</strong></p>
+				<pre><code class="language-typescript"><span class="hljs-keyword">const</span> rootState = {
+  tasks: {
+    <span class="hljs-comment">// Did you remember to set your id twice: s the object key, and in the Task payload?</span>
+    <span class="hljs-comment">// If not, how do you pass around your id's in a meaningful way?</span>
+    <span class="hljs-string">'first'</span>: { id: <span class="hljs-string">'first'</span>, name: <span class="hljs-string">'my first task'</span>, complete: <span class="hljs-literal">false</span> },
+    <span class="hljs-string">'second'</span>: { id: <span class="hljs-string">'second'</span>, name: <span class="hljs-string">'my second task'</span>, complete: <span class="hljs-literal">false</span> }
+  }
+}
+
+<span class="hljs-comment">// Is your `Tasks` interface an object vs the Task[] array you would like to return?</span>
+<span class="hljs-comment">// Did you have to refactor your type definitions because of naming collisions?</span>
+<span class="hljs-keyword">const</span> completedTasks = (tasks: Tasks): Task[] =&gt; {
+  <span class="hljs-comment">// Did you remember to polyfill Object.entries?</span>
+  <span class="hljs-comment">// Did you remember to do a guard for hasOwnProperty?</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.entries(tasks).map(<span class="hljs-function"><span class="hljs-params">taskArr</span> =&gt;</span> taskArr[<span class="hljs-number">1</span>])
+}
+
+<span class="hljs-keyword">const</span> taskReducer = <span class="hljs-function">(<span class="hljs-params">state, { <span class="hljs-keyword">type</span>, payload }</span>) =&gt;</span> {
+  <span class="hljs-keyword">let</span> newState = { ...state }
+
+  <span class="hljs-comment">// Better than storing arrays, but still lots of room for accidental mutations</span>
+  <span class="hljs-comment">// Did you bootstrap your config with source mapping support to trace down improper implementation?</span>
+  <span class="hljs-comment">// How do you trace and duplicate errors that users encounter in production?</span>
+  <span class="hljs-keyword">switch</span> (<span class="hljs-keyword">type</span>) {
+    <span class="hljs-keyword">case</span> TASK.UPDATE :
+      newState[payload.id] = payload
+      <span class="hljs-keyword">break</span>
+
+    <span class="hljs-keyword">case</span> TASK.DELETE :
+      <span class="hljs-keyword">delete</span> newState[payload.id]
+      <span class="hljs-keyword">break</span>
+
+    <span class="hljs-keyword">default</span> :
+      <span class="hljs-keyword">return</span> state
+  }
+
+  <span class="hljs-keyword">return</span> newState
+}</code></pre>
+				<a href="#the-horseshoes-approach" id="the-horseshoes-approach" style="color: inherit; text-decoration: none;">
+					<h3>The Horseshoes approach</h3>
+				</a>
+				<p>Taking the best from the above two approaches, we stored the data with normalization, sanity checks, and immutability. Leveraging immer and lodash along the way. Thus your data is stored like you would find in a typical database, but you have many helpers and methods at your disposal. Oh, and it&#39;s strongly typed the whole time. No more <code>any</code>!</p>
+				<p><strong><a href="https://unicorn.github.io/horseshoes/interfaces/resources.html">Extend the Resources interface</a></strong>
+				Horseshoes was designed to give you <em>some</em> rigidity while assuming a few small things like: <code>isLoading</code>, <code>errors</code>, and <code>errorTrace</code>. It also stores your data by <code>keys</code> (functional FTW) and <code>data</code> (OOP FTW) giving you a normalized state no matter what your programming paradigm.</p>
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { Resources, Resource } <span class="hljs-keyword">from</span> <span class="hljs-string">'horseshoes'</span>
+
+<span class="hljs-keyword">interface</span> Task <span class="hljs-keyword">extends</span> Resource {
+  name: <span class="hljs-built_in">string</span>
+  complete: <span class="hljs-built_in">boolean</span>
+
+  <span class="hljs-comment">// inherited from Resource</span>
+  key: <span class="hljs-built_in">string</span>
+}
+
+<span class="hljs-keyword">interface</span> Tasks <span class="hljs-keyword">extends</span> Resources&lt;Task&gt; {
+  lastFetchedAt: <span class="hljs-built_in">Date</span>
+
+  <span class="hljs-comment">// inherited from Resources, used to debug implementation errors, regardless of where you have a proper source map setup.</span>
+  error: <span class="hljs-built_in">boolean</span>
+  errorTrace: {
+    [key: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">string</span>
+  }
+  <span class="hljs-comment">// normalized state so that you can fetch keys or the entire object from storage and glue them any way you want</span>
+  keys: <span class="hljs-built_in">string</span>[]
+  data: {
+    [key: <span class="hljs-built_in">string</span>]: Task
+  }
+}</code></pre>
+				<p><strong><a href="https://unicorn.github.io/horseshoes/globals.html#initresources">Init Resources</a> from an option rehydrated state</strong>
+				Note the typing and convenience of getting an initial or default state.</p>
+				<pre><code class="language-typescript"><span class="hljs-keyword">const</span> rootState = {
+  tasks: initResources&lt;Task&gt;(rehydratedTasks)
+}</code></pre>
+				<p><strong><a href="https://unicorn.github.io/horseshoes/interfaces/resourceaction.html">Typed actions</a></strong>
+				Loose assumptions made with an optional <code>payload?</code> property for all CRUD actions.</p>
+				<pre><code class="language-typescript"><span class="hljs-keyword">const</span> updateTask = (payload: Task): ResourceAction&lt;Task&gt; =&gt; {
+  <span class="hljs-keyword">type</span>: TASK.UPDATE,
+  payload
+}</code></pre>
+				<p><strong><a href="https://unicorn.github.io/horseshoes/globals.html#updateresource">Simpler Reducers with Resource CRUD helpers</a></strong>
+				With the small assumptions made above and in the library, we can then offer up a standardized way of performing CRUD ops:</p>
+				<pre><code class="language-typescript"><span class="hljs-keyword">const</span> defaultTask = {
+  complete: <span class="hljs-literal">false</span>
+}
+
+<span class="hljs-keyword">const</span> taskReducer = <span class="hljs-function">(<span class="hljs-params">state, { <span class="hljs-keyword">type</span>, payload }</span>) =&gt;</span> {
+  <span class="hljs-comment">// One guard statement, immutability provided under the hood.</span>
+  <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">type</span> || !payload) <span class="hljs-keyword">return</span> state
+
+  <span class="hljs-keyword">switch</span> (<span class="hljs-keyword">type</span>) {
+    <span class="hljs-keyword">case</span> TASK.UPDATE :
+      <span class="hljs-comment">// We can optionally pass any default properties to inherit from</span>
+      <span class="hljs-keyword">return</span> updateResource&lt;Task&gt;(state, payload, defaultTask)
+
+    <span class="hljs-keyword">case</span> TASK.DELETE :
+      <span class="hljs-keyword">return</span> deleteResource&lt;Task&gt;(state, payload)
+
+    <span class="hljs-keyword">default</span> :
+      <span class="hljs-keyword">return</span> state
+  }
+}</code></pre>
+				<p><strong><a href="https://unicorn.github.io/horseshoes/globals.html#toarray">toArray helper</a></strong></p>
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { toArray } <span class="hljs-keyword">from</span> <span class="hljs-string">'horseshoes'</span>
+
+<span class="hljs-keyword">const</span> completedTasks = toArray&lt;Task&gt;(tasks).filter(<span class="hljs-function"><span class="hljs-params">t</span> =&gt;</span> t.complete) <span class="hljs-comment">// returns Task[]</span></code></pre>
+				<a href="#read-more" id="read-more" style="color: inherit; text-decoration: none;">
+					<h2>Read more</h2>
+				</a>
+				<p>Check out the <a href="https://unicorn.github.io/horseshoes/">API Docs</a> for now. We&#39;re still working on the project and documentation.</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-not-exported">
+						<a href="modules/__global.html">__global</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="enums/alert.html" class="tsd-kind-icon">ALERT</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/alerts.html" class="tsd-kind-icon">ALERTS</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/actions.html" class="tsd-kind-icon">Actions</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/alert.html" class="tsd-kind-icon">Alert</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/alertaction.html" class="tsd-kind-icon">Alert<wbr>Action</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/alertitemprops.html" class="tsd-kind-icon">Alert<wbr>Item<wbr>Props</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/connected.html" class="tsd-kind-icon">Connected</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/fieldprops.html" class="tsd-kind-icon">Field<wbr>Props</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iconprops.html" class="tsd-kind-icon">Icon<wbr>Props</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ipcdispatchevent.html" class="tsd-kind-icon">Ipc<wbr>Dispatch<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/optionsobject.html" class="tsd-kind-icon">Options<wbr>Object</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/radiofieldprops.html" class="tsd-kind-icon">Radio<wbr>Field<wbr>Props</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/resource.html" class="tsd-kind-icon">Resource</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/resourceaction.html" class="tsd-kind-icon">Resource<wbr>Action</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/resources.html" class="tsd-kind-icon">Resources</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/resourcesaction.html" class="tsd-kind-icon">Resources<wbr>Action</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/selectfieldprops.html" class="tsd-kind-icon">Select<wbr>Field<wbr>Props</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/sortbydateopts.html" class="tsd-kind-icon">Sort<wbr>ByDate<wbr>Opts</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/textareafieldprops.html" class="tsd-kind-icon">Text<wbr>Area<wbr>Field<wbr>Props</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/textfieldprops.html" class="tsd-kind-icon">Text<wbr>Field<wbr>Props</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/toarrayopts.html" class="tsd-kind-icon">To<wbr>Array<wbr>Opts</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#callresult" class="tsd-kind-icon">Call<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-is-not-exported">
+						<a href="globals.html#clean" class="tsd-kind-icon">Clean</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-is-not-exported">
+						<a href="globals.html#dirty" class="tsd-kind-icon">Dirty</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#sagaiterator" class="tsd-kind-icon">Saga<wbr>Iterator</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#ipcdispatch" class="tsd-kind-icon">ipc<wbr>Dispatch</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#alertitem" class="tsd-kind-icon">Alert<wbr>Item</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#alertslist" class="tsd-kind-icon">Alerts<wbr>List</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#closeicon" class="tsd-kind-icon">Close<wbr>Icon</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#radiofield" class="tsd-kind-icon">Radio<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#selectfield" class="tsd-kind-icon">Select<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#textareafield" class="tsd-kind-icon">Text<wbr>Area<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#textfield" class="tsd-kind-icon">Text<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#alertreducer" class="tsd-kind-icon">alert<wbr>Reducer</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#call" class="tsd-kind-icon">call</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#camelize" class="tsd-kind-icon">camelize</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#camelizekeys" class="tsd-kind-icon">camelize<wbr>Keys</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#cancelled" class="tsd-kind-icon">cancelled</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#createalert" class="tsd-kind-icon">create<wbr>Alert</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#createipcmiddleware" class="tsd-kind-icon">create<wbr>Ipc<wbr>Middleware</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#createresource" class="tsd-kind-icon">create<wbr>Resource</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#deletealert" class="tsd-kind-icon">delete<wbr>Alert</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#deletealerts" class="tsd-kind-icon">delete<wbr>Alerts</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#deleteresource" class="tsd-kind-icon">delete<wbr>Resource</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#deleteresourcesby" class="tsd-kind-icon">delete<wbr>Resources<wbr>By</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#fork" class="tsd-kind-icon">fork</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#initresources" class="tsd-kind-icon">init<wbr>Resources</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#ipcresourcehandler" class="tsd-kind-icon">ipc<wbr>Resource<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#isnumerical" class="tsd-kind-icon">is<wbr>Numerical</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#mapstate" class="tsd-kind-icon">map<wbr>State</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#normalizepayload" class="tsd-kind-icon">normalize<wbr>Payload</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#rendermessages" class="tsd-kind-icon">render<wbr>Messages</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#renderradiooptions" class="tsd-kind-icon">render<wbr>Radio<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#renderselectoptions" class="tsd-kind-icon">render<wbr>Select<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#scrubpayload" class="tsd-kind-icon">scrub<wbr>Payload</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#select" class="tsd-kind-icon">select</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#sortbydate" class="tsd-kind-icon">sort<wbr>ByDate</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#take" class="tsd-kind-icon">take</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#toarray" class="tsd-kind-icon">to<wbr>Array</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#tooptions" class="tsd-kind-icon">to<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#updateresource" class="tsd-kind-icon">update<wbr>Resource</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#updateresources" class="tsd-kind-icon">update<wbr>Resources</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#upsertresource" class="tsd-kind-icon">upsert<wbr>Resource</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#ui" class="tsd-kind-icon">UI</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#defaultalert" class="tsd-kind-icon">default<wbr>Alert</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#defaultresources" class="tsd-kind-icon">default<wbr>Resources</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+						<a href="globals.html#mapdispatch" class="tsd-kind-icon">map<wbr>Dispatch</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
