@@ -33,7 +33,7 @@ export interface SelectFieldProps extends FieldProps {
   type: 'select';
   multiple?: boolean;
   searchable?: boolean;
-  onChange: (e: React.SyntheticEvent<HTMLSelectElement>) => void;
+  onChange?: (e: React.SyntheticEvent<HTMLSelectElement>) => void;
   selectHandler?: (v: string[]) => void;
   selectedValues?: string[];
 }
