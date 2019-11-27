@@ -1,6 +1,6 @@
 {
   "name": "horseshoes",
-  "version": "0.15.9",
+  "version": "0.16.1",
   "description": "A suite of react components, helpers, and model definitions for a normalized React/Redux stack",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
@@ -85,13 +85,13 @@
     "uuid": "^3.3.3"
   },
   "peerDependencies": {
+    "immer": "^5.x.x",
+    "lodash": "4.x.x",
     "react": "^16.x.x",
     "react-redux": "^7.x.x",
     "redux": "^4.x.x",
     "redux-saga": "^7.x.x",
-    "immer": "^5.x.x",
-    "uuid": "^3.x.x",
-    "lodash": "4.x.x"
+    "uuid": "^3.x.x"
   },
   "ava": {
     "failFast": true,
