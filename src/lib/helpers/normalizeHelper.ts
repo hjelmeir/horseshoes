@@ -14,7 +14,6 @@ const camelize = (key: string) => {
     return key.toString();
   }
 
-  // tslint:disable-next-line: variable-name
   key = key.replace(/[\-_\s]+(.)?/g, (_match, chr) =>
     chr ? chr.toUpperCase() : ''
   );

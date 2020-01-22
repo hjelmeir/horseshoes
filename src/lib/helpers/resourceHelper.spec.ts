@@ -1,4 +1,3 @@
-// tslint:disable:no-expression-statement
 import test from 'ava';
 import { createAlert } from '../controllers/alertController';
 import { ALERT, Alert, AlertAction, defaultAlert } from '../models/alert';
