@@ -1,16 +1,16 @@
 {
   "name": "horseshoes",
-  "version": "0.20.1",
-  "description": "A suite of react components, helpers, and model definitions for a normalized React/Redux stack",
+  "version": "0.21.1",
+  "description": "A suite of helpers, and model definitions for a normalized Redux/Saga stack",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
   "repository": "https://github.com/Unicorn/horseshoes",
   "license": "MIT",
   "keywords": [
-    "react",
     "redux",
     "normalize",
+    "saga",
     "redux-saga",
     "schema"
   ],
@@ -35,6 +35,7 @@
     "docs": "rm -rf docs && typedoc --out docs src --mode file",
     "version": "standard-version",
     "clean": "trash build test",
+    "prepublish": "run-s build && run-s doc",
     "prepare-release": "run-s test cov:check doc:html version doc:publish"
   },
   "engines": {
@@ -55,13 +56,13 @@
   },
   "devDependencies": {
     "@bitjson/npm-scripts-info": "^1.0.0",
-    "@types/electron": "^1.6.10",
     "@types/lodash": "^4.14.149",
-    "@types/node": "13.11.1",
+    "@types/node": "12",
     "@types/uuid": "^7.0.2",
     "ava": "3.7.0",
     "codecov": "^3.6.5",
     "cz-conventional-changelog": "^3.1.0",
+    "electron": "^8.2.3",
     "gh-pages": "^2.2.0",
     "immer": "^6.x.x",
     "lodash": "^4.x.x",
