@@ -5,7 +5,7 @@ import {
   AlertAction,
   ALERTS,
   defaultAlert,
-  Resources
+  Resources,
 } from '../models';
 
 /**
@@ -13,7 +13,7 @@ import {
  */
 export const createAlert = (payload: Alert): AlertAction => ({
   type: ALERT.CREATE,
-  payload
+  payload,
 });
 
 /**
@@ -21,11 +21,11 @@ export const createAlert = (payload: Alert): AlertAction => ({
  */
 export const deleteAlert = (payload: Alert): AlertAction => ({
   type: ALERT.DELETE,
-  payload
+  payload,
 });
 
 export const deleteAlerts = (): AlertAction => ({
-  type: ALERTS.DELETE
+  type: ALERTS.DELETE,
 });
 
 export const alertReducer = (

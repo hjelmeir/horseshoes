@@ -14,7 +14,7 @@ export interface IpcDispatchEvent {
 
 export const ipcResourceHandler: ipcDispatch = (_, type, payload) => ({
   type,
-  payload
+  payload,
 });
 
 export const createIpcMiddleware = (
@@ -27,18 +27,18 @@ export const createIpcMiddleware = (
     );
   }
 
-  Object.keys(events).forEach(key => {
+  Object.keys(events).forEach((key) => {
     if (typeof events[key] !== 'function') {
       throw new TypeError(
         `Each key in ipcListeners's must reference a dispatchable function, key "${key}" is of type "${typeof events[
-        key
+          key
         ]}"`
       );
     }
   });
 
   return ({ dispatch }: MiddlewareAPI) => {
-    Object.keys(events).forEach(key => {
+    Object.keys(events).forEach((key) => {
       renderer.on(key, (event: Event, payload: any) => {
         dispatch(events[key](event, key, payload));
       });

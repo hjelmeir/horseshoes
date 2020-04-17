@@ -8,7 +8,7 @@ export const defaultResources = {
   error: false,
   errorTrace: {},
   keys: [],
-  data: {}
+  data: {},
 };
 
 export const initResources = <M extends Resource>(
@@ -16,7 +16,7 @@ export const initResources = <M extends Resource>(
 ): Resources<M> => {
   return {
     ...defaultResources,
-    ...data
+    ...data,
   };
 };
 
@@ -62,7 +62,7 @@ export const upsertResource = <M extends Resource>(
     newState.data[payload.key] = {
       ...defaultResource,
       ...newState.data[payload.key],
-      ...payload
+      ...payload,
     };
   });
 };
@@ -82,7 +82,7 @@ export const updateResource = <M extends Resource>(
     newState.keys = union(newState.keys, [payload.key]);
     newState.data[payload.key] = {
       ...newState.data[payload.key],
-      ...payload
+      ...payload,
     };
   });
 };
@@ -99,11 +99,11 @@ export const updateResources = <M extends Resource>(
   }
 
   return produce(state, (newState: Resources<M>) => {
-    payload.forEach(course => {
+    payload.forEach((course) => {
       newState.keys = union(newState.keys, [course.key]);
       newState.data[course.key] = {
         ...newState.data[course.key],
-        ...course
+        ...course,
       };
     });
   });
@@ -139,9 +139,9 @@ export const deleteResourcesBy = <M extends Resource>(
   }
 
   const dataArr = toArray<M>(state).filter(
-    record => record[matches[0]] === matches[1]
+    (record) => record[matches[0]] === matches[1]
   );
-  const dataKeys = dataArr.map(record => record.key);
+  const dataKeys = dataArr.map((record) => record.key);
 
   if (dataArr.length === 0 || !dataArr[0].key) {
     return produce(state, (newState: Resources<M>) => {
@@ -154,6 +154,6 @@ export const deleteResourcesBy = <M extends Resource>(
     newState.keys = newState.keys.filter(
       (key: string) => !dataKeys.includes(key)
     );
-    dataArr.forEach(record => delete newState.data[record.key]);
+    dataArr.forEach((record) => delete newState.data[record.key]);
   }) as Resources<M>;
 };

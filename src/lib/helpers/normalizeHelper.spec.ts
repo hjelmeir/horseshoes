@@ -1,22 +1,22 @@
 import test from 'ava';
 import { camelizeKeys } from './normalizeHelper';
 
-test('camelizeKeys converts numeric indexes to string', t => {
+test('camelizeKeys converts numeric indexes to string', (t) => {
   const dirty = { 0: ['a', 'b', 'c'], 1: '1' };
   const clean = { '0': ['a', 'b', 'c'], '1': '1' };
   t.deepEqual(clean, camelizeKeys(dirty));
 });
 
-test('camelizeKeys works recursively', t => {
+test('camelizeKeys works recursively', (t) => {
   const dirty = {
     some_bar: 'bar',
     some_foo: {
       dog_goes_woof: 'woof',
       some_animals: {
         my_cat: 'cat',
-        dromedary_camel: 'camel'
-      }
-    }
+        dromedary_camel: 'camel',
+      },
+    },
   };
 
   const clean = {
@@ -25,23 +25,23 @@ test('camelizeKeys works recursively', t => {
       dogGoesWoof: 'woof',
       someAnimals: {
         myCat: 'cat',
-        dromedaryCamel: 'camel'
-      }
-    }
+        dromedaryCamel: 'camel',
+      },
+    },
   };
 
   t.deepEqual(clean, camelizeKeys(dirty));
 });
 
-test('camelizeKeys handles empty keys and values', t => {
+test('camelizeKeys handles empty keys and values', (t) => {
   const dirty = {
     foo_bar: undefined,
-    bar_baz: null
+    bar_baz: null,
   };
 
   const clean = {
     fooBar: null,
-    barBaz: null
+    barBaz: null,
   };
 
   t.deepEqual(clean, camelizeKeys(dirty));

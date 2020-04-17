@@ -7,7 +7,7 @@ import {
   fork as rawFork,
   select as rawSelect,
   Tail,
-  take as rawTake
+  take as rawTake,
 } from 'redux-saga/effects';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

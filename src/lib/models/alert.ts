@@ -5,11 +5,11 @@ import { Resource } from './resource';
 //
 export enum ALERT {
   CREATE = 'app/alert/create',
-  DELETE = 'app/alert/delete'
+  DELETE = 'app/alert/delete',
 }
 
 export enum ALERTS {
-  DELETE = 'app/alerts/DELETE'
+  DELETE = 'app/alerts/DELETE',
 }
 
 export interface Alert extends Resource {
@@ -33,5 +33,5 @@ export const defaultAlert: Alert = {
   status: 'generic',
   message: 'No message',
   dismissable: true,
-  dismissAfter: 3000
+  dismissAfter: 3000,
 };

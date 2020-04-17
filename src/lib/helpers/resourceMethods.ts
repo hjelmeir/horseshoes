@@ -34,8 +34,8 @@ export function toArray<M extends Resource>(
   options?: ToArrayOpts
 ): readonly M[] {
   const nextState = resources.keys
-    .filter(k => typeof k === 'string' && resources.data[k])
-    .map(k => resources.data[k]);
+    .filter((k) => typeof k === 'string' && resources.data[k])
+    .map((k) => resources.data[k]);
 
   if (options && options.sortByDate) {
     return sortByDate<M>(nextState, options.sortByDate);
@@ -52,7 +52,7 @@ export function toOptions<M extends Resource>(
 
   resource.keys.forEach((key: string) => {
     options[resource.data[key][ident]] = {
-      label: resource.data[key][ident]
+      label: resource.data[key][ident],
     };
   });
 

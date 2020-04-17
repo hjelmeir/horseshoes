@@ -1,9 +1,9 @@
-# Horseshoes for React and Redux
+# Horseshoes for Redux and Sagas
 
-A suite of react components, helpers, and model definitions for a normalized React/Redux stack.
+A suite of helpers, and model definitions for a normalized Redux and Saga stack.
 
 ## Getting started
-**Note**: This module is a work in progress and may frequently have breaking changes. It is currently being used in active development and production by Unicorn, however, across a myriad of applications (SPA, Electron, etc). While it is in alpha, you should use specific versions.
+**Note**: This module is a work in progress and may frequently have breaking changes. It is, however, currently being used effectively by [Unicorn](https://unicornagency.com) across a myriad of applications (SPA, Electron, etc) so the library is stable enough for production use. Just note that while in alpha, you should use specific versions.
 
 Install: `yarn add horseshoes`
 

@@ -23,7 +23,7 @@ const camelize = (key: string) => {
 
 export const camelizeKeys = (obj: Dirty): Clean => {
   const nextState = {};
-  Object.keys(obj).forEach(k => {
+  Object.keys(obj).forEach((k) => {
     nextState[camelize(k)] = obj[k]
       ? typeof obj[k] === 'object' && obj[k].constructor.name === 'Object'
         ? camelizeKeys(obj[k])
@@ -41,8 +41,8 @@ export const scrubPayload = <T extends Clean>(payload: T): Resource => {
 
 export const normalizePayload = (payload: Dirty | Dirty[]): Clean | Clean[] => {
   if (Array.isArray(payload)) {
-    return (payload as Dirty[]).map(r => ({
-      ...scrubPayload(camelizeKeys(r))
+    return (payload as Dirty[]).map((r) => ({
+      ...scrubPayload(camelizeKeys(r)),
     })) as Clean[];
   }
 
