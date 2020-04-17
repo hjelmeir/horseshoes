@@ -1,8 +1,9 @@
 import { Action, Dispatch, Middleware, MiddlewareAPI } from 'redux';
+import { IpcRenderer } from 'electron'
 
 declare global {
   interface Window {
-    readonly ipc: Electron.IpcRenderer;
+    readonly ipc: IpcRenderer;
   }
 }
 
@@ -18,7 +19,7 @@ export const ipcResourceHandler: ipcDispatch = (_, type, payload) => ({
 });
 
 export const createIpcMiddleware = (
-  renderer: Electron.IpcRenderer,
+  renderer: IpcRenderer,
   events: IpcDispatchEvent = {}
 ): Middleware<{}, any, Dispatch> => {
   if (typeof events !== 'object') {
@@ -31,7 +32,7 @@ export const createIpcMiddleware = (
     if (typeof events[key] !== 'function') {
       throw new TypeError(
         `Each key in ipcListeners's must reference a dispatchable function, key "${key}" is of type "${typeof events[
-          key
+        key
         ]}"`
       );
     }

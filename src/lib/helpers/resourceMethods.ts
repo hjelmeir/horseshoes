@@ -1,5 +1,12 @@
 import { Resource, Resources } from '../models/resource';
-import { OptionsObject } from '../views/form/types';
+
+interface OptionsObject {
+  [key: string]: {
+    label: string;
+    name?: string;
+    value?: string | number;
+  };
+}
 
 interface SortByDateOpts {
   readonly key: string;
