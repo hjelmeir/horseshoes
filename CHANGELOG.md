@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.20.1](https://github.com/Unicorn/horseshoes/compare/v0.16.5...v0.20.1) (2020-04-17)
+
 ### [0.16.5](https://github.com/Unicorn/horseshoes/compare/v0.16.3...v0.16.5) (2020-04-10)
 
 ### [0.16.3](https://github.com/Unicorn/horseshoes/compare/v0.16.1...v0.16.3) (2020-01-22)
