@@ -4,12 +4,12 @@ import { Resource } from './resource';
 // Types
 //
 export enum ALERT {
-  CREATE = 'app/alert/create',
-  DELETE = 'app/alert/delete',
+  CREATE = 'horseshoes/alert/create',
+  DELETE = 'horseshoes/alert/delete',
 }
 
 export enum ALERTS {
-  DELETE = 'app/alerts/DELETE',
+  DELETE = 'horseshoes/alerts/DELETE',
 }
 
 export interface Alert extends Resource {
