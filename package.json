@@ -71,7 +71,7 @@
     "prettier": "^2.0.4",
     "redux": "^4.x.x",
     "redux-saga": "^1.x.x",
-    "standard-version": "^7.1.0",
+    "standard-version": "^8.0.1",
     "trash-cli": "^3.0.0",
     "typescript": "^3.x.x",
     "uuid": "^7.x.x"
