@@ -1,5 +1,5 @@
 import { produce } from 'immer';
-import { union } from 'lodash';
+import union from 'lodash/union';
 import { Resource, Resources } from '../models/resource';
 import { toArray } from './resourceMethods';
 
